@@ -1,19 +1,24 @@
 <template>
   <div class="notes">
     <h1>Notes...</h1>
-    <div id="test">
-      {{ this.$store.state.posts }}
-    </div>
+    <h3 v-for="(item, index) in posts" :key="index">
+      {{ item.title }}
+    </h3>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+<script>
+// import { Component, Vue } from "vue-property-decorator";
+import { mapState } from "vuex";
 
-@Component
-export default class Notes extends Vue {
+// @Component
+export default {
+  name: "notes",
   mounted() {
     this.$store.dispatch("loadPosts");
+  },
+  computed: {
+    ...mapState(["posts"])
   }
-}
+};
 </script>
