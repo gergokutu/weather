@@ -8,13 +8,16 @@ export default new Vuex.Store({
   state: {
     posts: ["something to fetch"]
   },
+
   mutations: {
     SET_POSTS(state, posts) {
       state.posts = posts;
     }
   },
+
   actions: {
-    loadPosts({ commit }) {
+    loadPosts({ commit }, { test, age }) {
+      console.log(`${test} and ${age}`);
       axios
         .get("https://jsonplaceholder.typicode.com/posts")
         .then(response => {
