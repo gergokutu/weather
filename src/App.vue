@@ -5,6 +5,9 @@
       <router-link to="/notes">Notes</router-link>
     </div>
     <router-view />
+    <div id="test">
+      {{ this.$store.state.test }}
+    </div>
   </div>
 </template>
 
