@@ -1,12 +1,7 @@
 <template>
   <div class="weather">
-    <h1>Search bar comes here >>> Figma</h1>
-    <!-- <h3 v-for="(item, index) in cityInfo" :key="index">
-      {{ item }}
-    </h3>-->
-    <h3>{{ cityInfo.city_name }}</h3>
-
     <div class="search-box">
+      <!-- <img :src="flagURL" /> -->
       <img :src="flagURL" />
       <div class="select-box">
         <select v-model="countryCode">
@@ -24,22 +19,23 @@
         <input
           type="text"
           class="search-bar"
-          placeholder="Enter a city..."
+          placeholder="Please enter your location..."
           v-model="queryCity"
           @keypress="fetchWeather"
         />
       </div>
 
-      <div class="result">
+      <div
+        class="result"
+        v-if="queryCity.toLowerCase() === cityInfo.city_name.toLowerCase()"
+      >
+        <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
         <div class="actual-temp">
           {{ Math.round(cityInfo.app_temp) }} &#8451;
         </div>
-        <div class="date-time">{{ cityInfo.datetime }}</div>
+        <!-- <div class="date-time">{{ cityInfo.datetime }}</div> -->
         <div class="forecast">next 7 days...</div>
       </div>
-
-      <div>City: {{ queryCity }}</div>
-      <div>Code: {{ countryCode }}</div>
     </div>
   </div>
 </template>
@@ -56,6 +52,7 @@ import { mapState } from "vuex";
 export default class Weather extends Vue {
   queryCity = "";
   countryCode = "NL";
+
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
   }
@@ -65,8 +62,7 @@ export default class Weather extends Vue {
     const code = this.countryCode;
 
     if (event.key == "Enter" && city !== "") {
-      this.$store.dispatch("loadPosts", { city, code });
-      this.queryCity = "";
+      this.$store.dispatch("loadCity", { city, code });
     }
   }
 }
