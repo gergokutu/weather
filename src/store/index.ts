@@ -19,7 +19,7 @@ export default new Vuex.Store({
     loadPosts({ commit }, { test, age }) {
       console.log(`${test} and ${age}`);
       const API_KEY = "27612018b6ba443f89d194a31acfea3b";
-      const requestedCity = "Raleigh,NC";
+      const requestedCity = "Amsterdam,NL";
       axios
         .get(
           `https://api.weatherbit.io/v2.0/current?city=${requestedCity}&key=${API_KEY}`
