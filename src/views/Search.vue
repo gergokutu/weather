@@ -1,8 +1,8 @@
 <template>
   <div class="notes">
-    <h1>Notes...</h1>
+    <h1>Search bar comes here >>> Figma</h1>
     <h3 v-for="(item, index) in posts" :key="index">
-      {{ item.title }}
+      {{ item }}
     </h3>
   </div>
 </template>

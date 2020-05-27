@@ -18,11 +18,15 @@ export default new Vuex.Store({
   actions: {
     loadPosts({ commit }, { test, age }) {
       console.log(`${test} and ${age}`);
+      const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+      const requestedCity = "Amsterdam,NL";
       axios
-        .get("https://jsonplaceholder.typicode.com/posts")
+        .get(
+          `https://api.weatherbit.io/v2.0/current?city=${requestedCity}&key=${API_KEY}`
+        )
         .then(response => {
-          console.log("from API:", response.data);
-          const posts = response.data;
+          console.log("from API:", response.data.data[0]);
+          const posts = response.data.data[0].city_name;
           commit("SET_POSTS", posts);
         })
         .catch(error => console.log(error));
