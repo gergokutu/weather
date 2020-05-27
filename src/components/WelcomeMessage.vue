@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <p>Placeholder route...</p>
+    <p>
+      Try out the weather app by clicking on the <strong>"Weather"</strong> link
+      above!
+    </p>
   </div>
 </template>
 
@@ -8,7 +13,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class HelloWorld extends Vue {
+export default class WelcomeMessage extends Vue {
   @Prop() private msg!: string;
 }
 </script>
