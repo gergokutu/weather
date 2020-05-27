@@ -3,8 +3,44 @@
     <h1>Search bar comes here >>> Figma</h1>
     <!-- <h3 v-for="(item, index) in cityInfo" :key="index">
       {{ item }}
-    </h3> -->
+    </h3>-->
     <h3>{{ cityInfo.city_name }}</h3>
+
+    <div class="search-box">
+      <img :src="flagURL" />
+      <div class="select-box">
+        <select v-model="countryCode">
+          <option
+            v-for="(item, index) in cityList"
+            :key="index"
+            :value="item.countryCode"
+          >
+            {{ item.countryCode }}
+          </option>
+        </select>
+      </div>
+
+      <div class="search-bar">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Enter a city..."
+          v-model="queryCity"
+          @keypress="fetchWeather"
+        />
+      </div>
+
+      <div class="result">
+        <div class="actual-temp">
+          {{ Math.round(cityInfo.app_temp) }} &#8451;
+        </div>
+        <div class="date-time">{{ cityInfo.datetime }}</div>
+        <div class="forecast">next 7 days...</div>
+      </div>
+
+      <div>City: {{ queryCity }}</div>
+      <div>Code: {{ countryCode }}</div>
+    </div>
   </div>
 </template>
 
@@ -14,14 +50,24 @@ import { mapState } from "vuex";
 
 @Component({
   computed: {
-    ...mapState(["cityInfo"])
+    ...mapState(["cityInfo", "cityList"])
   }
 })
-export default class Notes extends Vue {
-  mounted() {
-    const test = "test";
-    const age = 6;
-    this.$store.dispatch("loadPosts", { test, age });
+export default class Weather extends Vue {
+  queryCity = "";
+  countryCode = "NL";
+  get flagURL() {
+    return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
+  }
+
+  fetchWeather(event: any) {
+    const city = this.queryCity;
+    const code = this.countryCode;
+
+    if (event.key == "Enter" && city !== "") {
+      this.$store.dispatch("loadPosts", { city, code });
+      this.queryCity = "";
+    }
   }
 }
 </script>
