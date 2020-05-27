@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/notes">Notes</router-link>
+      <router-link to="/">Welcome</router-link> |
+      <router-link to="/weather">Weather</router-link>
     </div>
     <router-view />
   </div>
@@ -29,5 +29,28 @@
       color: #42b983;
     }
   }
+}
+
+html {
+  height: 100vh;
+  width: auto;
+  margin: 0;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    linear-gradient(
+      133.86deg,
+      #102f7e -11.47%,
+      #0c8dd6 3.95%,
+      #1aa0ec 19.37%,
+      #60c6ff 34.78%,
+      #9bdbff 50.19%,
+      #b4deda 65.61%,
+      #ffd66b 81.02%,
+      #ffc178 96.44%,
+      #fe9255 111.85%
+    );
 }
 </style>
