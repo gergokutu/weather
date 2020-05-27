@@ -27,7 +27,11 @@
 
       <div
         class="result"
-        v-if="queryCity.toLowerCase() === cityInfo.city_name.toLowerCase()"
+        v-if="
+          queryCity &&
+            queryCity.toLowerCase() === cityInfo.city_name &&
+            cityInfo.city_name.toLowerCase()
+        "
       >
         <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
         <div class="actual-temp">
