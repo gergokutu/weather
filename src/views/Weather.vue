@@ -1,5 +1,5 @@
 <template>
-  <div class="weather">
+  <div :class="zeroSearch === 'true' ? 'weather-search' : 'weather-result'">
     <div class="search-box">
       <div class="weather-icon">
         <img
@@ -82,6 +82,10 @@
         </div>
       </div>
     </div>
+
+    <div>
+      <router-link to="/">Back to Welcome</router-link>
+    </div>
   </div>
 </template>
 
@@ -145,6 +149,55 @@ export default class Weather extends Vue {
 
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.weather-search {
+  height: 100vh;
+  width: auto;
+  margin: 0;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    linear-gradient(
+      133.86deg,
+      #102f7e -11.47%,
+      #0c8dd6 3.95%,
+      #1aa0ec 19.37%,
+      #60c6ff 34.78%,
+      #9bdbff 50.19%,
+      #b4deda 65.61%,
+      #ffd66b 81.02%,
+      #ffc178 96.44%,
+      #fe9255 111.85%
+    );
+  background-attachment: fixed;
+}
+
+.weather-result {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 2;
+
+  margin: 0;
+  background: linear-gradient(
+    133.86deg,
+    #102f7e -11.47%,
+    #0c8dd6 3.95%,
+    #1aa0ec 19.37%,
+    #60c6ff 34.78%,
+    #9bdbff 50.19%,
+    #b4deda 65.61%,
+    #ffd66b 81.02%,
+    #ffc178 96.44%,
+    #fe9255 111.85%
+  );
+  background-attachment: fixed;
+}
 
 .weather-icon,
 .flag,
