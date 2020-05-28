@@ -1,9 +1,5 @@
-<template>
+<template id="template">
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Welcome</router-link> |
-      <router-link to="/weather">Weather</router-link>
-    </div>
     <router-view />
   </div>
 </template>
@@ -14,11 +10,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #08153e;
 }
 
 #nav {
   padding: 30px;
+  opacity: 0.6;
+  background-color: transparent;
 
   a {
     font-weight: bold;
@@ -53,5 +54,7 @@ html {
       #fe9255 111.85%
     );
   background-attachment: fixed;
+  box-sizing: border-box;
+  margin: -1rem;
 }
 </style>

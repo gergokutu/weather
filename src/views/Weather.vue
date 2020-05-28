@@ -1,5 +1,5 @@
 <template>
-  <div class="weather">
+  <div :class="zeroSearch === 'true' ? 'weather-search' : 'weather-result'">
     <div class="search-box">
       <div class="weather-icon">
         <img
@@ -42,12 +42,12 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+        {{ Math.round(cityInfo.data[0].temp) }} &#8451;
       </div>
 
       <div class="forecast">
         <div class="avg">
-          Avg of next 10 days:
+          (Avg of next 10 days:
           {{
             Math.round(
               cityInfo.data
@@ -57,23 +57,34 @@
                 cityInfo.data.slice(1, 11).length
             )
           }}
-          &#8451;
+          &#8451;)
         </div>
 
         <div class="next-seven-days-block">
-          Next 7 days forecast:
+          <div class="period">
+            {{ new Date(cityInfo.data[1].valid_date).getDate() }}
+            -
+            {{ new Date(cityInfo.data[7].valid_date).getDate() }}
+            {{ month[new Date(cityInfo.data[7].valid_date).getMonth()] }}
+            {{ new Date(cityInfo.data[7].valid_date).getFullYear() }}
+          </div>
+
           <div
             class="daily-forecast"
             v-for="(day, index) in cityInfo.data.slice(1, 8)"
             :key="index"
           >
-            <div>
+            <div class="day-name">
               {{ week[new Date(day.valid_date).getDay()] }}
             </div>
-            <div>{{ Math.round(day.temp) }} &#8451;</div>
+            <div class="day-temp">{{ Math.round(day.temp) }} &#8451;</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="back-to-welcome">
+      <router-link to="/">Back to Welcome</router-link>
     </div>
   </div>
 </template>
@@ -99,10 +110,24 @@ export default class Weather extends Vue {
     "Friday",
     "Saturday"
   ];
+  month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Augustus",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
   zeroSearch = "true";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
-  code = `c02d`;
+  // code = `c02d`;
   extension = `.png`;
 
   get flagURL() {
@@ -121,3 +146,110 @@ export default class Weather extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.weather-search {
+  width: 100%;
+  padding-bottom: 4rem;
+  margin: 0rem;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    linear-gradient(
+      133.86deg,
+      #102f7e -11.47%,
+      #0c8dd6 3.95%,
+      #1aa0ec 19.37%,
+      #60c6ff 34.78%,
+      #9bdbff 50.19%,
+      #b4deda 65.61%,
+      #ffd66b 81.02%,
+      #ffc178 96.44%,
+      #fe9255 111.85%
+    );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.weather-result {
+  position: absolute;
+  height: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 2;
+
+  margin: 0;
+  background: linear-gradient(
+    133.86deg,
+    #102f7e -11.47%,
+    #0c8dd6 3.95%,
+    #1aa0ec 19.37%,
+    #60c6ff 34.78%,
+    #9bdbff 50.19%,
+    #b4deda 65.61%,
+    #ffd66b 81.02%,
+    #ffc178 96.44%,
+    #fe9255 111.85%
+  );
+  background-position: center center;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.weather-icon,
+.flag,
+.select-box {
+  opacity: 1;
+}
+
+.result {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #08153e;
+  opacity: 0.6;
+}
+
+.actual-temp {
+  color: rgb(218, 175, 175);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.avg {
+  color: rgb(218, 175, 175);
+  font-weight: bold;
+}
+
+.next-seven-days-block {
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.period {
+  font-weight: bold;
+}
+
+.day-name {
+  font-weight: bold;
+}
+
+.day-temp {
+  color: rgb(218, 175, 175);
+  font-weight: bold;
+}
+
+.back-to-welcome {
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+}
+</style>
