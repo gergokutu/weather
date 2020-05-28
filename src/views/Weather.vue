@@ -6,7 +6,7 @@
       <div class="select-box">
         <select v-model="countryCode">
           <option
-            v-for="(item, index) in cityList"
+            v-for="(item, index) in countryList"
             :key="index"
             :value="item.countryCode"
           >
@@ -24,21 +24,45 @@
           @keypress="fetchWeather"
         />
       </div>
+    </div>
 
-      <div
-        class="result"
-        v-if="
-          queryCity &&
-            queryCity.toLowerCase() === cityInfo.city_name &&
-            cityInfo.city_name.toLowerCase()
-        "
-      >
-        <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
-        <div class="actual-temp">
-          {{ Math.round(cityInfo.app_temp) }} &#8451;
+    <div class="result" v-if="cityInfo.city_name !== undefined">
+      <h3 class="city-name">{{ cityInfo.city_name }}</h3>
+
+      <div class="actual-temp">
+        Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+      </div>
+
+      <div class="forecast">
+        <!-- Next 10 days temp:
+          {{ cityInfo.data.map(day => Math.round(day.temp)).slice(1, 11) }} -->
+        <div class="avg">
+          Avg of next 10 days:
+          {{
+            Math.round(
+              cityInfo.data
+                .map(day => day.temp)
+                .slice(1, 11)
+                .reduce((acc, curr) => acc + curr) /
+                cityInfo.data.slice(1, 11).length
+            )
+          }}
+          &#8451;
         </div>
-        <!-- <div class="date-time">{{ cityInfo.datetime }}</div> -->
-        <div class="forecast">next 7 days...</div>
+
+        <div class="next-seven-days-block">
+          Next 7 days forecast:
+          <div
+            class="daily-forecast"
+            v-for="(day, index) in cityInfo.data.slice(1, 8)"
+            :key="index"
+          >
+            <div>
+              {{ week[new Date(day.valid_date).getDay()] }}
+            </div>
+            <div>{{ Math.round(day.temp) }} &#8451;</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -50,12 +74,21 @@ import { mapState } from "vuex";
 
 @Component({
   computed: {
-    ...mapState(["cityInfo", "cityList"])
+    ...mapState(["cityInfo", "countryList", "avgTen"])
   }
 })
 export default class Weather extends Vue {
   queryCity = "";
   countryCode = "NL";
+  week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
@@ -67,6 +100,7 @@ export default class Weather extends Vue {
 
     if (event.key == "Enter" && city !== "") {
       this.$store.dispatch("loadCity", { city, code });
+      this.queryCity = "";
     }
   }
 }
