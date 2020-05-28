@@ -24,19 +24,18 @@
           @keypress="fetchWeather"
         />
       </div>
+    </div>
 
-      <div class="result" v-if="cityInfo.city_name !== undefined">
-        <h3 class="city-name">{{ cityInfo.city_name }}</h3>
+    <div class="result" v-if="cityInfo.city_name !== undefined">
+      <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
-        <div class="actual-temp">
-          Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
-        </div>
+      <div class="actual-temp">
+        Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+      </div>
 
-        <div class="forecast">
-          Next 10 days temp:
-          {{ cityInfo.data.map(day => day.temp).slice(1, 11) }}
-        </div>
-
+      <div class="forecast">
+        <!-- Next 10 days temp:
+          {{ cityInfo.data.map(day => Math.round(day.temp)).slice(1, 11) }} -->
         <div class="avg">
           Avg of next 10 days:
           {{

@@ -277,7 +277,6 @@ export default new Vuex.Store({
       axios
         .get(
           `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=${code}&key=${API_KEY}`
-          // https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=API_KEY
         )
         .then(response => {
           console.log("from API:", response.data.data[0]);
