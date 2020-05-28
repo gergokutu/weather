@@ -143,13 +143,21 @@ export default class Weather extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.weather-icon,
+.flag,
+.select-box {
+  opacity: 1;
+}
 
 .result {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
+  color: #08153e;
+  opacity: 0.6;
 }
 
 .actual-temp {
