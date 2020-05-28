@@ -38,8 +38,8 @@
       </div>
     </div>
 
-    <div class="result" v-if="queryCity !== ''">
-      <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
+    <div class="result" v-if="cityInfo !== ''">
+      <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
         Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
@@ -115,7 +115,7 @@ export default class Weather extends Vue {
 
     if (event.key == "Enter") {
       this.$store.dispatch("loadCity", { city, code });
-      // this.queryCity = "";
+      this.queryCity = "";
       this.zeroSearch = "false";
     }
   }
