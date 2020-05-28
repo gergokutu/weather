@@ -1,8 +1,20 @@
 <template>
   <div class="weather">
     <div class="search-box">
-      <!-- <img :src="flagURL" /> -->
-      <img :src="flagURL" />
+      <div class="weather-icon">
+        <img
+          :src="
+            url +
+              (zeroSearch === 'true' ? 'c01d' : cityInfo.data[0].weather.icon) +
+              extension
+          "
+        />
+      </div>
+
+      <div class="flag">
+        <img :src="flagURL" />
+      </div>
+
       <div class="select-box">
         <select v-model="countryCode">
           <option
@@ -26,7 +38,7 @@
       </div>
     </div>
 
-    <div class="result" v-if="cityInfo.city_name !== undefined">
+    <div class="result" v-if="cityInfo !== ''">
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
@@ -34,8 +46,6 @@
       </div>
 
       <div class="forecast">
-        <!-- Next 10 days temp:
-          {{ cityInfo.data.map(day => Math.round(day.temp)).slice(1, 11) }} -->
         <div class="avg">
           Avg of next 10 days:
           {{
@@ -89,6 +99,11 @@ export default class Weather extends Vue {
     "Friday",
     "Saturday"
   ];
+  zeroSearch = "true";
+
+  url = `https://www.weatherbit.io/static/img/icons/`;
+  code = `c02d`;
+  extension = `.png`;
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
@@ -98,9 +113,10 @@ export default class Weather extends Vue {
     const city = this.queryCity;
     const code = this.countryCode;
 
-    if (event.key == "Enter" && city !== "") {
+    if (event.key == "Enter") {
       this.$store.dispatch("loadCity", { city, code });
       this.queryCity = "";
+      this.zeroSearch = "false";
     }
   }
 }
