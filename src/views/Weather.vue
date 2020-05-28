@@ -29,7 +29,7 @@
         <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
         <div class="actual-temp">
-          {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+          Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
         </div>
 
         <div class="forecast">
@@ -51,15 +51,18 @@
           &#8451;
         </div>
 
-        <div
-          class="forecast"
-          v-for="(day, index) in cityInfo.data.slice(1, 8)"
-          :key="index"
-        >
-          <div>
-            {{ week[new Date(day.valid_date).getDay()] }}
+        <div class="next-seven-days-block">
+          Next 7 days forecast:
+          <div
+            class="daily-forecast"
+            v-for="(day, index) in cityInfo.data.slice(1, 8)"
+            :key="index"
+          >
+            <div>
+              {{ week[new Date(day.valid_date).getDay()] }}
+            </div>
+            <div>{{ Math.round(day.temp) }} &#8451;</div>
           </div>
-          <div>{{ Math.round(day.temp) }} &#8451;</div>
         </div>
       </div>
     </div>
