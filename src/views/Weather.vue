@@ -26,25 +26,40 @@
       </div>
 
       <div class="result" v-if="cityInfo.city_name !== undefined">
-        <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
+        <h3 class="city-name">{{ cityInfo.city_name }}</h3>
+
         <div class="actual-temp">
           {{ Math.round(cityInfo.data[0].temp) }} &#8451;
         </div>
-        <div class="avg-10">
-          {{ Math.round(cityInfo.data[1].temp) }} &#8451;
-        </div>
-        <!-- <div class="date-time">{{ cityInfo.datetime }}</div> -->
+
         <div class="forecast">
+          Next 10 days temp:
           {{ cityInfo.data.map(day => day.temp).slice(1, 11) }}
         </div>
-        <div class="forecast">
+
+        <div class="avg">
+          Avg of next 10 days:
           {{
-            cityInfo.data
-              .map(day => day.temp)
-              .slice(1, 11)
-              .reduce((acc, curr) => acc + curr) /
-              cityInfo.data.slice(1, 11).length
+            Math.round(
+              cityInfo.data
+                .map(day => day.temp)
+                .slice(1, 11)
+                .reduce((acc, curr) => acc + curr) /
+                cityInfo.data.slice(1, 11).length
+            )
           }}
+          &#8451;
+        </div>
+
+        <div
+          class="forecast"
+          v-for="(day, index) in cityInfo.data.slice(1, 8)"
+          :key="index"
+        >
+          <div>
+            {{ week[new Date(day.valid_date).getDay()] }}
+          </div>
+          <div>{{ Math.round(day.temp) }} &#8451;</div>
         </div>
       </div>
     </div>
@@ -63,6 +78,15 @@ import { mapState } from "vuex";
 export default class Weather extends Vue {
   queryCity = "";
   countryCode = "NL";
+  week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
@@ -74,6 +98,7 @@ export default class Weather extends Vue {
 
     if (event.key == "Enter" && city !== "") {
       this.$store.dispatch("loadCity", { city, code });
+      this.queryCity = "";
     }
   }
 }
