@@ -3,8 +3,8 @@
     <h1>{{ msg }}</h1>
     <p>Placeholder route...</p>
     <p>
-      Try out the weather app by clicking on the
-      <strong><router-link to="/weather">Weather</router-link></strong> link!
+      Try out the <strong>weather app</strong> click
+      <router-link to="/weather">here!</router-link>
     </p>
   </div>
 </template>

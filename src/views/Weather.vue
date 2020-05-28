@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="back-to-welcome">
       <router-link to="/">Back to Welcome</router-link>
     </div>
   </div>
@@ -151,9 +151,9 @@ export default class Weather extends Vue {
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .weather-search {
-  height: 100vh;
-  width: auto;
-  margin: 0;
+  width: 100%;
+  padding-bottom: 4rem;
+  margin: 0rem;
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.8),
@@ -171,12 +171,15 @@ export default class Weather extends Vue {
       #ffc178 96.44%,
       #fe9255 111.85%
     );
+  background-position: center center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .weather-result {
   position: absolute;
-  height: 100vh;
+  height: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -196,7 +199,10 @@ export default class Weather extends Vue {
     #ffc178 96.44%,
     #fe9255 111.85%
   );
-  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: cover;
 }
 
 .weather-icon,
@@ -240,5 +246,10 @@ export default class Weather extends Vue {
 .day-temp {
   color: rgb(218, 175, 175);
   font-weight: bold;
+}
+
+.back-to-welcome {
+  margin-top: 2rem;
+  padding-bottom: 4rem;
 }
 </style>
