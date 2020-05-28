@@ -52,5 +52,6 @@ html {
       #ffc178 96.44%,
       #fe9255 111.85%
     );
+  background-attachment: fixed;
 }
 </style>
