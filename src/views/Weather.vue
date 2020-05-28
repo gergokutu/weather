@@ -2,11 +2,19 @@
   <div class="weather">
     <div class="search-box">
       <div class="weather-icon">
-        {{ cityInfo && cityInfo.data[0].weather.icon }}
+        <img
+          :src="
+            url +
+              (zeroSearch === 'true' ? 'c01d' : cityInfo.data[0].weather.icon) +
+              extension
+          "
+        />
       </div>
 
-      <img :src="url + (queryCity === '' ? 'c01d' : 'c03d') + extension" />
-      <img :src="flagURL" />
+      <div class="flag">
+        <img :src="flagURL" />
+      </div>
+
       <div class="select-box">
         <select v-model="countryCode">
           <option
@@ -30,8 +38,8 @@
       </div>
     </div>
 
-    <div class="result" v-if="typeof cityInfo.city_name === 'string'">
-      <h3 class="city-name">{{ cityInfo.city_name }}</h3>
+    <div class="result" v-if="queryCity !== ''">
+      <!-- <h3 class="city-name">{{ cityInfo.city_name }}</h3> -->
 
       <div class="actual-temp">
         Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
@@ -91,6 +99,7 @@ export default class Weather extends Vue {
     "Friday",
     "Saturday"
   ];
+  zeroSearch = "true";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
   code = `c02d`;
@@ -106,14 +115,9 @@ export default class Weather extends Vue {
 
     if (event.key == "Enter") {
       this.$store.dispatch("loadCity", { city, code });
-      this.queryCity = "";
+      // this.queryCity = "";
+      this.zeroSearch = "false";
     }
   }
 }
 </script>
-
-<style lang="scss">
-.weather-icon {
-  background-image: url("https://www.weatherbit.io/static/img/icons/c02d.png");
-}
-</style>
