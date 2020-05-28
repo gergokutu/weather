@@ -42,12 +42,12 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        Actual temp: {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+        {{ Math.round(cityInfo.data[0].temp) }} &#8451;
       </div>
 
       <div class="forecast">
         <div class="avg">
-          Avg of next 10 days:
+          (Avg of next 10 days:
           {{
             Math.round(
               cityInfo.data
@@ -57,20 +57,27 @@
                 cityInfo.data.slice(1, 11).length
             )
           }}
-          &#8451;
+          &#8451;)
         </div>
 
         <div class="next-seven-days-block">
-          Next 7 days forecast:
+          <div class="period">
+            {{ new Date(cityInfo.data[1].valid_date).getDate() }}
+            -
+            {{ new Date(cityInfo.data[7].valid_date).getDate() }}
+            {{ month[new Date(cityInfo.data[7].valid_date).getMonth()] }}
+            {{ new Date(cityInfo.data[7].valid_date).getFullYear() }}
+          </div>
+
           <div
             class="daily-forecast"
             v-for="(day, index) in cityInfo.data.slice(1, 8)"
             :key="index"
           >
-            <div>
+            <div class="day-name">
               {{ week[new Date(day.valid_date).getDay()] }}
             </div>
-            <div>{{ Math.round(day.temp) }} &#8451;</div>
+            <div class="day-temp">{{ Math.round(day.temp) }} &#8451;</div>
           </div>
         </div>
       </div>
@@ -99,10 +106,24 @@ export default class Weather extends Vue {
     "Friday",
     "Saturday"
   ];
+  month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Augustus",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
   zeroSearch = "true";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
-  code = `c02d`;
+  // code = `c02d`;
   extension = `.png`;
 
   get flagURL() {
@@ -121,3 +142,42 @@ export default class Weather extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.result {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.actual-temp {
+  color: rgb(218, 175, 175);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.avg {
+  color: rgb(218, 175, 175);
+  font-weight: bold;
+}
+
+.next-seven-days-block {
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.period {
+  font-weight: bold;
+}
+
+.day-name {
+  font-weight: bold;
+}
+
+.day-temp {
+  color: rgb(218, 175, 175);
+  font-weight: bold;
+}
+</style>
