@@ -224,7 +224,6 @@ export default class Weather extends Vue {
 .search-bar-wrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-content: center;
   justify-content: space-evenly;
   text-align: start;
