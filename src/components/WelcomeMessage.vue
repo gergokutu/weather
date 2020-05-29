@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <p>Placeholder route...</p>
     <p>
-      Try out the <strong>weather app</strong> click
+      Try out the <strong>weather app</strong>
       <router-link to="/weather">here!</router-link>
     </p>
   </div>
