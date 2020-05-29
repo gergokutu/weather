@@ -226,7 +226,7 @@ export default class Weather extends Vue {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: start;
 
   width: 425px;
@@ -235,9 +235,10 @@ export default class Weather extends Vue {
 }
 
 .search-bar > input {
+  font-size: 0.7rem;
   border: none;
   height: 30px;
-  width: auto;
+  width: 75%;
 }
 
 .search-icon {
@@ -281,7 +282,7 @@ h3 {
 
 .weather-result {
   position: absolute;
-  height: 130%;
+  height: 400%;
   top: 0;
   left: 0;
   width: 105%;
@@ -296,8 +297,8 @@ h3 {
     $colorByTemp 137.04%
   );
   background-position: center center;
-  background-repeat: repeat;
-  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 
