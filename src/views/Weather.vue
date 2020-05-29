@@ -50,7 +50,7 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+        {{ Math.round(cityInfo.data[0].temp) }} <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -226,7 +226,7 @@ export default class Weather extends Vue {
   flex-direction: row;
   align-content: center;
   justify-content: space-evenly;
-  text-align: start;
+  text-align: center;
 
   width: 425px;
   border: 1px solid rgba(8, 21, 62, 0.05);
@@ -235,9 +235,13 @@ export default class Weather extends Vue {
 
 .search-bar > input {
   font-size: 0.7rem;
+  font-weight: bold;
   border: none;
-  height: 30px;
-  width: 75%;
+  height: 27px;
+  width: 85%;
+  opacity: 0.4;
+  margin-top: 4px;
+  padding-left: 2rem;
 }
 
 .search-icon {
@@ -248,7 +252,7 @@ export default class Weather extends Vue {
 
 h3 {
   opacity: 0.5;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .weather-search {
@@ -284,7 +288,7 @@ h3 {
   height: 400%;
   top: 0;
   left: 0;
-  width: 105%;
+  width: 110%;
   margin: 0;
   margin-right: 2rem;
 
@@ -324,7 +328,19 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 8rem;
+  font-size: 10rem;
+  font-weight: 800;
+  position: relative;
+  bottom: 30px;
+  left: 30px;
+}
+
+.actual-temp > span {
+  position: relative;
+  bottom: 80px;
+  right: 40px;
+  color: #ffffff;
+  font-size: 3rem;
   font-weight: 800;
 }
 
@@ -333,6 +349,9 @@ h3 {
   font-weight: 600;
   opacity: 0.9;
   margin-bottom: 1rem;
+  position: relative;
+  bottom: 50px;
+  right: auto;
 }
 
 .next-seven-days-block {
@@ -345,15 +364,15 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: start;
 
   position: relative;
   margin-top: 20px;
   margin-bottom: 4rem;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 20%;
+  width: 60%;
 }
 
 .period {
@@ -361,7 +380,7 @@ h3 {
   // margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .day-name {
@@ -377,6 +396,7 @@ h3 {
 
 .daily-forecast:hover {
   opacity: 0.5;
+  cursor: grabbing;
 }
 
 .day-temp {
