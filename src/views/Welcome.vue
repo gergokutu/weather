@@ -21,5 +21,6 @@ export default {
 
 .welcome {
   opacity: 0.6;
+  margin-top: 15%;
 }
 </style>

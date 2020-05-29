@@ -56,5 +56,9 @@ html {
   background-attachment: fixed;
   box-sizing: border-box;
   margin: -1rem;
+
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 </style>
