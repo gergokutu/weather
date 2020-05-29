@@ -50,7 +50,7 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+        {{ Math.round(cityInfo.data[0].temp) }} <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -173,21 +173,26 @@ export default class Weather extends Vue {
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.9)
     ),
-    #f8f8f8;
+    #4fffca91;
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
 
   position: relative;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  left: 30%;
-  width: 40%;
-  height: 92px;
+  margin-top: 13%;
+  left: 27%;
+  width: 45%;
+  height: auto;
+  min-height: 92px;
 }
 
 .search-box > div {
   margin: 5px;
-  height: 35px;
+  height: 38px;
+}
+
+.search-bar {
+  background-color: transparent;
+  width: 90%;
 }
 
 .select-wrapper {
@@ -195,9 +200,9 @@ export default class Weather extends Vue {
   flex-direction: row;
   flex-wrap: wrap;
   // align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
-  width: 80px;
+  width: 120px;
   border: 1px solid rgba(8, 21, 62, 0.05);
   border-radius: 6px;
 }
@@ -207,18 +212,22 @@ export default class Weather extends Vue {
   background-color: #ffffff;
 }
 
+.weather-icon {
+  position: relative;
+  bottom: 7px;
+}
+
 .weather-icon > img {
-  height: 100%;
+  height: 140%;
   width: auto;
 }
 
 .search-bar-wrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
-  text-align: start;
+  justify-content: space-evenly;
+  text-align: center;
 
   width: 425px;
   border: 1px solid rgba(8, 21, 62, 0.05);
@@ -226,15 +235,25 @@ export default class Weather extends Vue {
 }
 
 .search-bar > input {
+  font-size: 0.7rem;
+  font-weight: bold;
   border: none;
-  height: 30px;
-  width: 375px;
+  height: 27px;
+  width: 85%;
+  opacity: 0.4;
+  margin-top: 4px;
+  padding-left: 2rem;
+}
+
+.search-icon {
+  margin-top: 1.5%;
+  margin-left: 10px;
+  opacity: 0.4;
 }
 
 h3 {
-  margin-bottom: 30px;
-  opacity: 0.6;
-  font-size: 2rem;
+  opacity: 0.5;
+  font-size: 3rem;
 }
 
 .weather-search {
@@ -267,10 +286,10 @@ h3 {
 
 .weather-result {
   position: absolute;
-  height: auto;
+  height: 400%;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 108%;
   margin: 0;
   margin-right: 2rem;
 
@@ -282,15 +301,23 @@ h3 {
     $colorByTemp 137.04%
   );
   background-position: center center;
-  background-repeat: repeat;
-  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 
 .weather-icon,
 .flag,
 .select-box {
-  opacity: 1;
+  opacity: 0.8;
+}
+
+.flag {
+  margin-top: 1.5%;
+}
+
+.select-box {
+  margin-top: 3%;
 }
 
 .result {
@@ -302,14 +329,30 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 4rem;
-  font-weight: 600;
+  font-size: 10rem;
+  font-weight: 800;
+  position: relative;
+  bottom: 30px;
+  left: 30px;
+}
+
+.actual-temp > span {
+  position: relative;
+  bottom: 80px;
+  right: 40px;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 800;
 }
 
 .avg {
-  color: #ffffff;
+  color: #e9faf8;
   font-weight: 600;
-  opacity: 0.6;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  position: relative;
+  bottom: 50px;
+  right: auto;
 }
 
 .next-seven-days-block {
@@ -327,29 +370,50 @@ h3 {
 
   position: relative;
   margin-top: 20px;
-  margin-bottom: 5%;
-  left: 25%;
-  width: 50%;
+  margin-bottom: 4rem;
+  top: 0;
+  left: 20%;
+  width: 60%;
 }
 
 .period {
-  margin-top: 50px;
+  margin-top: 70px;
+  // margin-bottom: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .day-name {
   font-weight: bold;
-  opacity: 0.6;
+  opacity: 0.4;
+  margin-top: -1.2rem;
+  font-size: 1rem;
+}
+
+.daily-forecast {
+  margin: 20px;
+}
+
+.daily-forecast:hover {
+  opacity: 0.5;
+  cursor: grabbing;
 }
 
 .day-temp {
   color: #ffffff;
+  font-size: 1.8rem;
   font-weight: 600;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .back-to-welcome {
-  margin-bottom: 2rem;
-  padding-bottom: 7rem;
+  margin-top: 1.5rem;
+  padding-bottom: 4rem;
+  opacity: 0.6;
+
+  position: relative;
+  top: 130px;
 }
 </style>

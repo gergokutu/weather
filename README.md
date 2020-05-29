@@ -1,29 +1,15 @@
 # weather-ts
 
-## Project setup
-```
-npm install
-```
+- Please clone the repository
+- npm run serve
+- insert your API_KEY
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 
+      -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
+##    
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Next
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- warn customer to refresh data periodically
+- trigger a funct to re-fetch actual data > use another URL (actual weather instead of 16days) to have better icon codes)
+- Chainge the pointher when hovering over > actual, daily-forecast
