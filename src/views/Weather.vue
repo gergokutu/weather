@@ -178,10 +178,9 @@ export default class Weather extends Vue {
   border-radius: 16px;
 
   position: relative;
-  margin-top: 10%;
-  margin-bottom: 5%;
+  margin-top: 13%;
   left: 30%;
-  width: 40%;
+  width: 650px;
   height: 50px;
 }
 
@@ -241,9 +240,9 @@ export default class Weather extends Vue {
 }
 
 h3 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   opacity: 0.5;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .weather-search {
@@ -276,10 +275,10 @@ h3 {
 
 .weather-result {
   position: absolute;
-  height: auto;
+  height: 130%;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 105%;
   margin: 0;
   margin-right: 2rem;
 
@@ -332,18 +331,19 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: start;
 
   position: relative;
   margin-top: 20px;
   margin-bottom: 4rem;
+  top: 0;
   left: 0;
   width: 100%;
 }
 
 .period {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -353,8 +353,12 @@ h3 {
 .day-name {
   font-weight: bold;
   opacity: 0.4;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   font-size: 1rem;
+}
+
+.daily-forecast {
+  margin: 20px;
 }
 
 .daily-forecast:hover {
@@ -373,5 +377,8 @@ h3 {
   margin-top: 1.5rem;
   padding-bottom: 4rem;
   opacity: 0.6;
+
+  position: relative;
+  top: 130px;
 }
 </style>
