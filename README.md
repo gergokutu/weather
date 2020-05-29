@@ -1,4 +1,4 @@
-# weather-ts :sunny::umbrella::cloud:
+# weather-ts :sunny: :umbrella: :cloud:
 
 - Please clone the repository
 - npm run serve
