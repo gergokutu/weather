@@ -179,9 +179,10 @@ export default class Weather extends Vue {
 
   position: relative;
   margin-top: 13%;
-  left: 30%;
-  width: 40%;
+  left: 27%;
+  width: 45%;
   height: auto;
+  min-height: 92px;
 }
 
 .search-box > div {
@@ -288,7 +289,7 @@ h3 {
   height: 400%;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 108%;
   margin: 0;
   margin-right: 2rem;
 
