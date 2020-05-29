@@ -220,13 +220,13 @@ export default class Weather extends Vue {
 }
 
 .actual-temp {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-size: 4rem;
   font-weight: bold;
 }
 
 .avg {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -244,7 +244,7 @@ export default class Weather extends Vue {
 }
 
 .day-temp {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-weight: bold;
 }
 
