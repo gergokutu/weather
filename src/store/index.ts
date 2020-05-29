@@ -271,7 +271,6 @@ export default new Vuex.Store({
 
   actions: {
     loadCity({ commit }, { city, code }) {
-      // console.log(city, code);
       const API_KEY = "27612018b6ba443f89d194a31acfea3b";
 
       axios
