@@ -186,7 +186,7 @@ export default class Weather extends Vue {
 
 .search-box > div {
   margin: 5px;
-  height: 35px;
+  height: 38px;
 }
 
 .search-bar {
@@ -198,7 +198,7 @@ export default class Weather extends Vue {
   flex-direction: row;
   flex-wrap: wrap;
   // align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
   width: 120px;
   border: 1px solid rgba(8, 21, 62, 0.05);
@@ -210,8 +210,13 @@ export default class Weather extends Vue {
   background-color: #ffffff;
 }
 
+.weather-icon {
+  position: relative;
+  bottom: 15%;
+}
+
 .weather-icon > img {
-  height: 110%;
+  height: 140%;
   width: auto;
 }
 
@@ -235,14 +240,14 @@ export default class Weather extends Vue {
 }
 
 .search-icon {
+  margin-top: 1.5%;
   margin-left: 10px;
   opacity: 0.4;
 }
 
 h3 {
-  margin-bottom: 10px;
   opacity: 0.5;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .weather-search {
@@ -301,6 +306,14 @@ h3 {
   opacity: 0.8;
 }
 
+.flag {
+  margin-top: 1.5%;
+}
+
+.select-box {
+  margin-top: 3%;
+}
+
 .result {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -343,8 +356,8 @@ h3 {
 }
 
 .period {
-  margin-top: 10px;
-  margin-bottom: 2rem;
+  margin-top: 70px;
+  // margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.5;
@@ -353,7 +366,7 @@ h3 {
 .day-name {
   font-weight: bold;
   opacity: 0.4;
-  margin-top: 1.2rem;
+  margin-top: -1.2rem;
   font-size: 1rem;
 }
 
