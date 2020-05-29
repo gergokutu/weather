@@ -173,7 +173,7 @@ export default class Weather extends Vue {
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.9)
     ),
-    #f8f8f8;
+    #4fffca91;
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
 
@@ -188,6 +188,10 @@ export default class Weather extends Vue {
 .search-box > div {
   margin: 5px;
   height: 35px;
+}
+
+.search-bar {
+  background-color: transparent;
 }
 
 .select-wrapper {
@@ -234,7 +238,7 @@ export default class Weather extends Vue {
 h3 {
   margin-bottom: 30px;
   opacity: 0.6;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .weather-search {
@@ -302,7 +306,7 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 600;
 }
 
@@ -327,29 +331,40 @@ h3 {
 
   position: relative;
   margin-top: 20px;
-  margin-bottom: 5%;
-  left: 25%;
-  width: 50%;
+  margin-bottom: 4rem;
+  left: 0;
+  width: 100%;
 }
 
 .period {
   margin-top: 50px;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .day-name {
   font-weight: bold;
-  opacity: 0.6;
+  opacity: 0.4;
+  margin-top: 1.2rem;
+  font-size: 1rem;
+}
+
+.daily-forecast:hover {
+  opacity: 0.5;
 }
 
 .day-temp {
   color: #ffffff;
+  font-size: 1.8rem;
   font-weight: 600;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .back-to-welcome {
-  margin-bottom: 2rem;
-  padding-bottom: 7rem;
+  margin-bottom: 1rem;
+  padding-bottom: 4rem;
 }
 </style>
