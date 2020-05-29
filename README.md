@@ -1,4 +1,4 @@
-# weather-ts
+# weather-ts :sunny::umbrella::cloud:
 
 - Please clone the repository
 - npm run serve
@@ -7,6 +7,8 @@
 ## 
       -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
 ##    
+
+You can check the deployed version **[here.](https://gergokutu-weather.netlify.app)
 
 ### Next
 
