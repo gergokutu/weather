@@ -125,6 +125,7 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
+  endColor = "$colorByTemp: #FFD66B";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
   // code = `c02d`;
@@ -187,17 +188,13 @@ export default class Weather extends Vue {
   z-index: 2;
 
   margin: 0;
+
+  $colorByTemp: #ffd66b;
   background: linear-gradient(
-    133.86deg,
-    #102f7e -11.47%,
-    #0c8dd6 3.95%,
-    #1aa0ec 19.37%,
-    #60c6ff 34.78%,
-    #9bdbff 50.19%,
-    #b4deda 65.61%,
-    #ffd66b 81.02%,
-    #ffc178 96.44%,
-    #fe9255 111.85%
+    145.74deg,
+    #9bdbff -33.02%,
+    #b4deda 52.01%,
+    $colorByTemp 137.04%
   );
   background-position: center center;
   background-repeat: repeat;
@@ -220,13 +217,13 @@ export default class Weather extends Vue {
 }
 
 .actual-temp {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-size: 4rem;
   font-weight: bold;
 }
 
 .avg {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -244,12 +241,12 @@ export default class Weather extends Vue {
 }
 
 .day-temp {
-  color: rgb(218, 175, 175);
+  color: #ffffff;
   font-weight: bold;
 }
 
 .back-to-welcome {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding-bottom: 4rem;
 }
 </style>
