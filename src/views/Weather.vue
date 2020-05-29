@@ -180,8 +180,8 @@ export default class Weather extends Vue {
   position: relative;
   margin-top: 13%;
   left: 30%;
-  width: 650px;
-  height: 50px;
+  width: 40%;
+  height: auto;
 }
 
 .search-box > div {
@@ -191,6 +191,7 @@ export default class Weather extends Vue {
 
 .search-bar {
   background-color: transparent;
+  width: 90%;
 }
 
 .select-wrapper {
@@ -212,7 +213,7 @@ export default class Weather extends Vue {
 
 .weather-icon {
   position: relative;
-  bottom: 15%;
+  bottom: 7px;
 }
 
 .weather-icon > img {
@@ -236,7 +237,7 @@ export default class Weather extends Vue {
 .search-bar > input {
   border: none;
   height: 30px;
-  width: 375px;
+  width: auto;
 }
 
 .search-icon {
