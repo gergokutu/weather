@@ -249,7 +249,7 @@ export default class Weather extends Vue {
 }
 
 .back-to-welcome {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding-bottom: 4rem;
 }
 </style>
