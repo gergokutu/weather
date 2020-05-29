@@ -182,7 +182,7 @@ export default class Weather extends Vue {
   margin-bottom: 5%;
   left: 30%;
   width: 40%;
-  height: 92px;
+  height: 50px;
 }
 
 .search-box > div {
@@ -201,7 +201,7 @@ export default class Weather extends Vue {
   // align-content: center;
   justify-content: center;
   text-align: center;
-  width: 80px;
+  width: 120px;
   border: 1px solid rgba(8, 21, 62, 0.05);
   border-radius: 6px;
 }
@@ -212,7 +212,7 @@ export default class Weather extends Vue {
 }
 
 .weather-icon > img {
-  height: 100%;
+  height: 110%;
   width: auto;
 }
 
@@ -235,10 +235,15 @@ export default class Weather extends Vue {
   width: 375px;
 }
 
+.search-icon {
+  margin-left: 10px;
+  opacity: 0.4;
+}
+
 h3 {
   margin-bottom: 30px;
-  opacity: 0.6;
-  font-size: 4rem;
+  opacity: 0.5;
+  font-size: 5rem;
 }
 
 .weather-search {
@@ -294,7 +299,7 @@ h3 {
 .weather-icon,
 .flag,
 .select-box {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .result {
@@ -306,14 +311,15 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 6rem;
-  font-weight: 600;
+  font-size: 8rem;
+  font-weight: 800;
 }
 
 .avg {
-  color: #ffffff;
+  color: #e9faf8;
   font-weight: 600;
-  opacity: 0.6;
+  opacity: 0.9;
+  margin-bottom: 1rem;
 }
 
 .next-seven-days-block {
@@ -338,7 +344,7 @@ h3 {
 
 .period {
   margin-top: 50px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.5;
@@ -347,7 +353,7 @@ h3 {
 .day-name {
   font-weight: bold;
   opacity: 0.4;
-  margin-top: 1.2rem;
+  margin-top: 1.5rem;
   font-size: 1rem;
 }
 
@@ -364,7 +370,8 @@ h3 {
 }
 
 .back-to-welcome {
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   padding-bottom: 4rem;
+  opacity: 0.6;
 }
 </style>
