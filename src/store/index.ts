@@ -271,7 +271,6 @@ export default new Vuex.Store({
 
   actions: {
     loadCity({ commit }, { city, code }) {
-      // console.log(city, code);
       const API_KEY = "27612018b6ba443f89d194a31acfea3b";
 
       axios
@@ -279,7 +278,6 @@ export default new Vuex.Store({
           `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=${code}&key=${API_KEY}`
         )
         .then(response => {
-          console.log("from API:", response.data.data[0]);
           const city = response.data;
           commit("SET_CITY", city);
         })

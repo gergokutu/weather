@@ -11,30 +11,38 @@
         />
       </div>
 
-      <div class="flag">
-        <img :src="flagURL" />
+      <div class="select-wrapper">
+        <div class="flag">
+          <img :src="flagURL" />
+        </div>
+
+        <div class="select-box">
+          <select v-model="countryCode">
+            <option
+              v-for="(item, index) in countryList"
+              :key="index"
+              :value="item.countryCode"
+            >
+              {{ item.countryCode }}
+            </option>
+          </select>
+        </div>
       </div>
 
-      <div class="select-box">
-        <select v-model="countryCode">
-          <option
-            v-for="(item, index) in countryList"
-            :key="index"
-            :value="item.countryCode"
-          >
-            {{ item.countryCode }}
-          </option>
-        </select>
-      </div>
+      <div class="search-bar-wrapper">
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Please enter your location..."
+            v-model="queryCity"
+            @keypress="fetchWeather"
+          />
+        </div>
 
-      <div class="search-bar">
-        <input
-          type="text"
-          class="search-bar"
-          placeholder="Please enter your location..."
-          v-model="queryCity"
-          @keypress="fetchWeather"
-        />
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
       </div>
     </div>
 
@@ -42,7 +50,7 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(cityInfo.data[0].temp) }} &#8451;
+        {{ Math.round(cityInfo.data[0].temp) }} <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -69,15 +77,17 @@
             {{ new Date(cityInfo.data[7].valid_date).getFullYear() }}
           </div>
 
-          <div
-            class="daily-forecast"
-            v-for="(day, index) in cityInfo.data.slice(1, 8)"
-            :key="index"
-          >
-            <div class="day-name">
-              {{ week[new Date(day.valid_date).getDay()] }}
+          <div class="daily-wrapper">
+            <div
+              class="daily-forecast"
+              v-for="(day, index) in cityInfo.data.slice(1, 8)"
+              :key="index"
+            >
+              <div class="day-name">
+                {{ week[new Date(day.valid_date).getDay()] }}
+              </div>
+              <div class="day-temp">{{ Math.round(day.temp) }} &#8451;</div>
             </div>
-            <div class="day-temp">{{ Math.round(day.temp) }} &#8451;</div>
           </div>
         </div>
       </div>
@@ -125,6 +135,7 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
+  endColor = "$colorByTemp: #FFD66B";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
   // code = `c02d`;
@@ -150,65 +161,113 @@ export default class Weather extends Vue {
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.weather-search {
-  width: 100%;
-  padding-bottom: 4rem;
-  margin: 0rem;
+.search-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+
   background: linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
     ),
-    linear-gradient(
-      133.86deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+    #4fffca91;
+  box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
+  border-radius: 16px;
+
+  position: relative;
+  margin-top: 13%;
+  left: 27%;
+  width: 45%;
+  height: auto;
+  min-height: 92px;
 }
 
-.weather-result {
-  position: absolute;
-  height: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
+.search-box > div {
+  margin: 5px;
+  height: 38px;
+}
 
-  z-index: 2;
+.search-bar {
+  background-color: transparent;
+  width: 90%;
+}
 
-  margin: 0;
-  background: linear-gradient(
-    133.86deg,
-    #102f7e -11.47%,
-    #0c8dd6 3.95%,
-    #1aa0ec 19.37%,
-    #60c6ff 34.78%,
-    #9bdbff 50.19%,
-    #b4deda 65.61%,
-    #ffd66b 81.02%,
-    #ffc178 96.44%,
-    #fe9255 111.85%
-  );
-  background-position: center center;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-size: cover;
+.select-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // align-content: center;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 120px;
+  border: 1px solid rgba(8, 21, 62, 0.05);
+  border-radius: 6px;
+}
+
+.select-box > select {
+  border: none;
+  background-color: #ffffff;
+}
+
+.weather-icon {
+  position: relative;
+  bottom: 7px;
+}
+
+.weather-icon > img {
+  height: 140%;
+  width: auto;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  text-align: center;
+
+  width: 425px;
+  border: 1px solid rgba(8, 21, 62, 0.05);
+  border-radius: 6px;
+}
+
+.search-bar > input {
+  font-size: 0.7rem;
+  font-weight: bold;
+  border: none;
+  height: 27px;
+  width: 85%;
+  opacity: 0.4;
+  margin-top: 4px;
+  padding-left: 2rem;
+}
+
+.search-icon {
+  margin-top: 1.5%;
+  margin-left: 10px;
+  opacity: 0.4;
+}
+
+h3 {
+  opacity: 0.5;
+  font-size: 3rem;
 }
 
 .weather-icon,
 .flag,
 .select-box {
-  opacity: 1;
+  opacity: 0.8;
+}
+
+.flag {
+  margin-top: 1.5%;
+}
+
+.select-box {
+  margin-top: 3%;
 }
 
 .result {
@@ -216,18 +275,34 @@ export default class Weather extends Vue {
   font-style: normal;
   font-weight: 600;
   color: #08153e;
-  opacity: 0.6;
 }
 
 .actual-temp {
   color: #ffffff;
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 10rem;
+  font-weight: 800;
+  position: relative;
+  bottom: 30px;
+  left: 30px;
+}
+
+.actual-temp > span {
+  position: relative;
+  bottom: 80px;
+  right: 40px;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 800;
 }
 
 .avg {
-  color: #ffffff;
-  font-weight: bold;
+  color: #e9faf8;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  position: relative;
+  bottom: 50px;
+  right: auto;
 }
 
 .next-seven-days-block {
@@ -235,21 +310,60 @@ export default class Weather extends Vue {
   padding: 2rem;
 }
 
+.daily-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  text-align: start;
+
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 4rem;
+  top: 0;
+  left: 20%;
+  width: 60%;
+}
+
 .period {
+  margin-top: 70px;
+  // margin-bottom: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  opacity: 0.4;
 }
 
 .day-name {
   font-weight: bold;
+  opacity: 0.4;
+  margin-top: -1.2rem;
+  font-size: 1rem;
+}
+
+.daily-forecast {
+  margin: 20px;
+}
+
+.daily-forecast:hover {
+  opacity: 0.5;
+  cursor: grabbing;
 }
 
 .day-temp {
   color: #ffffff;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .back-to-welcome {
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
   padding-bottom: 4rem;
+  opacity: 0.6;
+
+  position: relative;
+  top: 130px;
 }
 </style>
