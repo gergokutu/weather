@@ -161,28 +161,77 @@ export default class Weather extends Vue {
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+.weather-search {
+  width: 100%;
+  padding-bottom: 4rem;
+  margin: 0rem;
+  margin-right: 2rem;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    linear-gradient(
+      133.86deg,
+      #102f7e -11.47%,
+      #0c8dd6 3.95%,
+      #1aa0ec 19.37%,
+      #60c6ff 34.78%,
+      #9bdbff 50.19%,
+      #b4deda 65.61%,
+      #ffd66b 81.02%,
+      #ffc178 96.44%,
+      #fe9255 111.85%
+    );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.weather-result {
+  position: absolute;
+  height: 115%;
+  top: 0;
+  left: 0;
+  width: 103%;
+  margin: 0;
+  margin-right: 2rem;
+
+  $colorByTemp: #ffd66b;
+  background: linear-gradient(
+    145.74deg,
+    #9bdbff -33.02%,
+    #b4deda 52.01%,
+    $colorByTemp 137.04%
+  );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .search-box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: center;
-
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.9)
     ),
     #4fffca91;
-  box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
+  box-shadow: 0px 2px 10px rgba(1, 5, 19, 0.15),
+    2px 4px 15px rgba(18, 35, 95, 0.15), 4px 6px 20px rgba(58, 81, 156, 0.15);
   border-radius: 16px;
-
   position: relative;
-  margin-top: 13%;
+  margin-top: 10%;
   left: 27%;
   width: 45%;
   height: auto;
-  min-height: 92px;
+  min-height: 70px;
 }
 
 .search-box > div {
@@ -253,57 +302,7 @@ export default class Weather extends Vue {
 
 h3 {
   opacity: 0.5;
-  font-size: 3rem;
-}
-
-.weather-search {
-  width: 100%;
-  padding-bottom: 4rem;
-  margin: 0rem;
-  margin-right: 2rem;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    linear-gradient(
-      133.86deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.weather-result {
-  position: absolute;
-  height: 400%;
-  top: 0;
-  left: 0;
-  width: 108%;
-  margin: 0;
-  margin-right: 2rem;
-
-  $colorByTemp: #ffd66b;
-  background: linear-gradient(
-    145.74deg,
-    #9bdbff -33.02%,
-    #b4deda 52.01%,
-    $colorByTemp 137.04%
-  );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  font-size: 2.5rem;
 }
 
 .weather-icon,
@@ -332,7 +331,6 @@ h3 {
   font-size: 10rem;
   font-weight: 800;
   position: relative;
-  bottom: 30px;
   left: 30px;
 }
 
@@ -351,7 +349,7 @@ h3 {
   opacity: 0.9;
   margin-bottom: 1rem;
   position: relative;
-  bottom: 50px;
+  bottom: 20px;
   right: auto;
 }
 
@@ -370,15 +368,13 @@ h3 {
 
   position: relative;
   margin-top: 20px;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   top: 0;
   left: 20%;
   width: 60%;
 }
 
 .period {
-  margin-top: 70px;
-  // margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.4;
@@ -413,7 +409,7 @@ h3 {
   padding-bottom: 4rem;
   opacity: 0.6;
 
-  position: relative;
-  top: 130px;
+  // position: relative;
+  // top: 20px;
 }
 </style>
