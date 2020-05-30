@@ -8,7 +8,7 @@
       -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
 ##    
 
-You can check the deployed version **[here.](https://gergokutu-weather.netlify.app)
+You can check the deployed version [here.](https://gergokutu-weather.netlify.app)
 
 ### Next
 
