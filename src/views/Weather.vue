@@ -256,56 +256,6 @@ h3 {
   font-size: 3rem;
 }
 
-.weather-search {
-  width: 100%;
-  padding-bottom: 4rem;
-  margin: 0rem;
-  margin-right: 2rem;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    linear-gradient(
-      133.86deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.weather-result {
-  position: absolute;
-  height: 400%;
-  top: 0;
-  left: 0;
-  width: 108%;
-  margin: 0;
-  margin-right: 2rem;
-
-  $colorByTemp: #ffd66b;
-  background: linear-gradient(
-    145.74deg,
-    #9bdbff -33.02%,
-    #b4deda 52.01%,
-    $colorByTemp 137.04%
-  );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .weather-icon,
 .flag,
 .select-box {
