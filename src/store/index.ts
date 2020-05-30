@@ -278,7 +278,6 @@ export default new Vuex.Store({
           `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=${code}&key=${API_KEY}`
         )
         .then(response => {
-          console.log("from API:", response.data.data[0]);
           const city = response.data;
           commit("SET_CITY", city);
         })
