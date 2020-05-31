@@ -50,7 +50,7 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(cityInfo.data[0].temp) }} <span>&#8451;</span>
+        {{ Math.round(actual.data[0].temp) }} <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -105,7 +105,7 @@ import { mapState } from "vuex";
 
 @Component({
   computed: {
-    ...mapState(["cityInfo", "countryList", "avgTen"])
+    ...mapState(["cityInfo", "countryList", "avgTen", "actual"])
   }
 })
 export default class Weather extends Vue {
@@ -138,19 +138,33 @@ export default class Weather extends Vue {
   endColor = "$colorByTemp: #FFD66B";
 
   url = `https://www.weatherbit.io/static/img/icons/`;
-  // code = `c02d`;
   extension = `.png`;
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
   }
 
+  clearAllIntervals = () => {
+    for (let i = 1; i < 99999; i++) {
+      clearInterval(i);
+      console.log("CLEARED");
+    }
+  };
+
   fetchWeather(event: any) {
     const city = this.queryCity;
     const code = this.countryCode;
 
     if (event.key == "Enter") {
-      this.$store.dispatch("loadCity", { city, code });
+      // this.clearAllIntervals();
+      this.$store.dispatch("loadCityForecast", { city, code });
+      this.$store.dispatch("loadCityActual", { city, code });
+      // console.log("tick")
+      // API refreshed every 5 mins > 300000ms
+      // setInterval(() => {
+      //   console.log("TACK")
+      //   this.$store.dispatch("loadCityActual", { city, code });
+      // }, 300000)
       this.queryCity = "";
       this.zeroSearch = "false";
     }
