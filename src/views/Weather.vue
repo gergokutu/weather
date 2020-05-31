@@ -5,7 +5,7 @@
         <img
           :src="
             url +
-              (zeroSearch === 'true' ? 'c01d' : cityInfo.data[0].weather.icon) +
+              (zeroSearch === 'true' ? 'c01d' : actual.data[0].weather.icon) +
               extension
           "
         />
