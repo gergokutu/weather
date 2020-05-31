@@ -285,7 +285,6 @@ export default new Vuex.Store({
         .then(response => {
           const forecast = response.data;
           commit("SET_CITY_FORECAST", forecast);
-          console.log("FORECAST");
         })
         .catch(error => console.log(error));
     },
@@ -300,7 +299,6 @@ export default new Vuex.Store({
         .then(response => {
           const actual = response.data;
           commit("SET_CITY_ACTUAL", actual);
-          console.log("ACTUAL");
         })
         .catch(error => console.log(error));
     }
