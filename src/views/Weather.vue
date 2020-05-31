@@ -148,7 +148,6 @@ export default class Weather extends Vue {
     const nextID = setInterval(() => console.log("timerID:", nextID), 1000);
     for (let i = 1; i <= nextID; i++) {
       clearInterval(i);
-      console.log("CLEARED:", i);
     }
   };
 
@@ -161,15 +160,14 @@ export default class Weather extends Vue {
         this.clearAllIntervals();
       }
       this.timerIDCounter++;
-      // console.log("Counter:", this.timerIDCounter);
+
       this.$store.dispatch("loadCityForecast", { city, code });
       this.$store.dispatch("loadCityActual", { city, code });
-      console.log("tick");
       // API refreshed every 5 mins > 300000ms
       setInterval(() => {
-        console.log("TACK");
         this.$store.dispatch("loadCityActual", { city, code });
-      }, 3000);
+      }, 300000);
+
       this.queryCity = "";
       this.zeroSearch = "false";
     }
