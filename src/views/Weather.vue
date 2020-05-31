@@ -135,36 +135,41 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
-  endColor = "$colorByTemp: #FFD66B";
-
   url = `https://www.weatherbit.io/static/img/icons/`;
   extension = `.png`;
+
+  timerIDCounter = 0;
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
   }
 
   clearAllIntervals = () => {
-    for (let i = 1; i < 99999; i++) {
+    const nextID = setInterval(() => console.log("timerID:", nextID), 1000);
+    for (let i = 1; i <= nextID; i++) {
       clearInterval(i);
-      console.log("CLEARED");
+      console.log("CLEARED:", i);
     }
   };
 
   fetchWeather(event: any) {
-    const city = this.queryCity;
-    const code = this.countryCode;
+    const city: string = this.queryCity;
+    const code: string = this.countryCode;
 
     if (event.key == "Enter") {
-      // this.clearAllIntervals();
+      if (this.timerIDCounter > 0) {
+        this.clearAllIntervals();
+      }
+      this.timerIDCounter++;
+      // console.log("Counter:", this.timerIDCounter);
       this.$store.dispatch("loadCityForecast", { city, code });
       this.$store.dispatch("loadCityActual", { city, code });
-      // console.log("tick")
+      console.log("tick");
       // API refreshed every 5 mins > 300000ms
-      // setInterval(() => {
-      //   console.log("TACK")
-      //   this.$store.dispatch("loadCityActual", { city, code });
-      // }, 300000)
+      setInterval(() => {
+        console.log("TACK");
+        this.$store.dispatch("loadCityActual", { city, code });
+      }, 3000);
       this.queryCity = "";
       this.zeroSearch = "false";
     }
