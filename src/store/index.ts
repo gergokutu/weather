@@ -7,6 +7,7 @@ Vue.use(Vuex, axios);
 export default new Vuex.Store({
   state: {
     cityInfo: "",
+    actual: "",
     countryList: [
       { countryCode: "AD", countryName: "Andorra" },
       { countryCode: "AE", countryName: "United Arab Emirates" },
@@ -264,13 +265,17 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    SET_CITY(state, city) {
-      state.cityInfo = city;
+    SET_CITY_FORECAST(state, forecast) {
+      state.cityInfo = forecast;
+    },
+
+    SET_CITY_ACTUAL(state, actual) {
+      state.actual = actual;
     }
   },
 
   actions: {
-    loadCity({ commit }, { city, code }) {
+    loadCityForecast({ commit }, { city, code }) {
       const API_KEY = "27612018b6ba443f89d194a31acfea3b";
 
       axios
@@ -278,8 +283,24 @@ export default new Vuex.Store({
           `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=${code}&key=${API_KEY}`
         )
         .then(response => {
-          const city = response.data;
-          commit("SET_CITY", city);
+          const forecast = response.data;
+          commit("SET_CITY_FORECAST", forecast);
+          console.log("FORECAST");
+        })
+        .catch(error => console.log(error));
+    },
+
+    loadCityActual({ commit }, { city, code }) {
+      const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+
+      axios
+        .get(
+          `https://api.weatherbit.io/v2.0/current?city=${city}&country=${code}&key=${API_KEY}`
+        )
+        .then(response => {
+          const actual = response.data;
+          commit("SET_CITY_ACTUAL", actual);
+          console.log("ACTUAL");
         })
         .catch(error => console.log(error));
     }
