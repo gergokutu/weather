@@ -261,8 +261,7 @@ export default new Vuex.Store({
       { countryCode: "ZA", countryName: "South Africa" },
       { countryCode: "ZM", countryName: "Zambia" },
       { countryCode: "ZW", countryName: "Zimbabwe" }
-    ],
-    endColor: "#ffd66b"
+    ]
   },
 
   mutations: {
