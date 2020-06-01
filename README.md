@@ -1,17 +1,21 @@
-# weather-ts :sunny: :umbrella: :cloud:
+# Weather-TS :sunny: :umbrella: :cloud:
 
-- Please clone the repository
-- npm run serve
-- insert your API_KEY
+You can search for real time weather data by ensuring the country code and typing the city name. The application also shows you the average temperature of the next 10 days and forecast for the next 7 days.
+
+## Notes:
+
+- Application fetches data from https://www.weatherbit.io/ by using free API_KEY
+- API_KEY validity date: 10/06/2020
+- 1000 API call per day
+
+You can insert your own API_KEY in src/store/index.ts into the loadCityActual & loadCityForecast actions.
 
 ## 
       -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
 ##    
 
-You can check the deployed version [here.](https://gergokutu-weather.netlify.app)
+You can check the deployed version within the validity period [here.](https://gergokutu-weather.netlify.app)
 
 ### Next
 
-- warn customer to refresh data periodically
-- trigger a funct to re-fetch actual data > use another URL (actual weather instead of 16days) to have better icon codes)
-- Chainge the pointher when hovering over > actual, daily-forecast
+- Ensure test functions
