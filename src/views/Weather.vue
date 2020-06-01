@@ -1,5 +1,8 @@
 <template>
-  <div :class="zeroSearch === 'true' ? 'weather-search' : 'weather-result'">
+  <div
+    :class="zeroSearch === 'true' ? '' : 'weather-result'"
+    :style="`--color: ${endColor}`"
+  >
     <div class="search-box">
       <div class="weather-icon">
         <img
@@ -45,6 +48,7 @@
         </div>
       </div>
     </div>
+    <div>TEST: {{ endColor }}</div>
 
     <div class="result" v-if="cityInfo !== ''">
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
@@ -105,7 +109,7 @@ import { mapState } from "vuex";
 
 @Component({
   computed: {
-    ...mapState(["cityInfo", "countryList", "avgTen", "actual"])
+    ...mapState(["cityInfo", "countryList", "avgTen", "actual", "endColor"])
   }
 })
 export default class Weather extends Vue {
@@ -137,7 +141,6 @@ export default class Weather extends Vue {
   zeroSearch = "true";
   url = `https://www.weatherbit.io/static/img/icons/`;
   extension = `.png`;
-
   timerIDCounter = 0;
 
   get flagURL() {
@@ -159,14 +162,14 @@ export default class Weather extends Vue {
       if (this.timerIDCounter > 0) {
         this.clearAllIntervals();
       }
-      this.timerIDCounter++;
+      // this.timerIDCounter++;
 
       this.$store.dispatch("loadCityForecast", { city, code });
       this.$store.dispatch("loadCityActual", { city, code });
-      // API refreshed every 5 mins > 300000ms
-      setInterval(() => {
-        this.$store.dispatch("loadCityActual", { city, code });
-      }, 300000);
+      // // API refreshed every 5 mins > 300000ms
+      // setInterval(() => {
+      //   this.$store.dispatch("loadCityActual", { city, code });
+      // }, 300000);
 
       this.queryCity = "";
       this.zeroSearch = "false";
@@ -178,33 +181,34 @@ export default class Weather extends Vue {
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.weather-search {
-  width: 100%;
-  padding-bottom: 4rem;
-  margin: 0rem;
-  margin-right: 2rem;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    linear-gradient(
-      133.86deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+// .weather-search {
+//   width: 100%;
+//   padding-bottom: 4rem;
+//   margin: 0rem;
+//   margin-right: 2rem;
+//   background: linear-gradient(
+//       0deg,
+//       rgba(255, 255, 255, 0.8),
+//       rgba(255, 255, 255, 0.8)
+//     ),
+//     linear-gradient(
+//       133.86deg,
+//       #102f7e -11.47%,
+//       #0c8dd6 3.95%,
+//       #1aa0ec 19.37%,
+//       #60c6ff 34.78%,
+//       #9bdbff 50.19%,
+//       #b4deda 65.61%,
+//       #ffd66b 81.02%,
+//       #ffc178 96.44%,
+//       #fe9255 111.85%
+//     );
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+//   background-size: cover;
+// }
+$colorByTemp: var(--color);
 
 .weather-result {
   position: absolute;
@@ -215,7 +219,6 @@ export default class Weather extends Vue {
   margin: 0;
   margin-right: 2rem;
 
-  $colorByTemp: #ffd66b;
   background: linear-gradient(
     145.74deg,
     #9bdbff -33.02%,
@@ -425,8 +428,5 @@ h3 {
   margin-top: 1.5rem;
   padding-bottom: 4rem;
   opacity: 0.6;
-
-  // position: relative;
-  // top: 20px;
 }
 </style>
