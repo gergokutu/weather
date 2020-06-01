@@ -4,7 +4,7 @@ You can search for real time weather data by ensuring the country code and typin
 
 ## Notes:
 
-- Application fetches data from [https://www.weatherbit.io/] by using free API_KEY
+- Application fetches data from https://www.weatherbit.io/ by using free API_KEY
 - API_KEY validity date: 10/06/2020
 - 1000 API call per day
 
@@ -14,7 +14,7 @@ You can insert your own API_KEY in src/store/index.ts into the loadCityActual & 
       -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
 ##    
 
-You can check the deployed version [here.](https://gergokutu-weather.netlify.app)
+You can check the deployed version within the validity period [here.](https://gergokutu-weather.netlify.app)
 
 ### Next
 
