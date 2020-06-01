@@ -1,5 +1,12 @@
 <template>
-  <div :class="zeroSearch === 'true' ? 'weather-search' : 'weather-result'">
+  <div
+    :class="zeroSearch === 'true' ? '' : 'weather-result'"
+    :style="
+      zeroSearch === 'true'
+        ? ''
+        : `--color: ${colorCodes[chooseColor(actual.data[0].temp)]}`
+    "
+  >
     <div class="search-box">
       <div class="weather-icon">
         <img
@@ -22,9 +29,8 @@
               v-for="(item, index) in countryList"
               :key="index"
               :value="item.countryCode"
+              >{{ item.countryCode }}</option
             >
-              {{ item.countryCode }}
-            </option>
           </select>
         </div>
       </div>
@@ -50,7 +56,8 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(actual.data[0].temp) }} <span>&#8451;</span>
+        {{ Math.round(actual.data[0].temp) }}
+        <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -137,12 +144,34 @@ export default class Weather extends Vue {
   zeroSearch = "true";
   url = `https://www.weatherbit.io/static/img/icons/`;
   extension = `.png`;
-
   timerIDCounter = 0;
+  colorCodes = [
+    "#102F7E", // -40
+    "#0C8DD6", // -30
+    "#1AA0EC", // -20
+    "#60C6FF", // -10
+    "#9BDBFF", // 0
+    "#B4DEDA", // 10
+    "#FFD66B", // 20
+    "#FFC178", // 30
+    "#FE9255" // 40
+  ];
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
   }
+
+  chooseColor = (temp: number) => {
+    if (temp < -41) return 0;
+    if (temp < -31) return 1;
+    if (temp < -21) return 2;
+    if (temp < -11) return 3;
+    if (temp < 1) return 4;
+    if (temp < 11) return 5;
+    if (temp < 21) return 6;
+    if (temp < 31) return 7;
+    if (temp >= 31) return 8;
+  };
 
   clearAllIntervals = () => {
     const nextID = setInterval(() => console.log("timerID:", nextID), 1000);
@@ -177,34 +206,7 @@ export default class Weather extends Vue {
 
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-.weather-search {
-  width: 100%;
-  padding-bottom: 4rem;
-  margin: 0rem;
-  margin-right: 2rem;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    linear-gradient(
-      133.86deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+$colorByTemp: var(--color);
 
 .weather-result {
   position: absolute;
@@ -215,7 +217,6 @@ export default class Weather extends Vue {
   margin: 0;
   margin-right: 2rem;
 
-  $colorByTemp: #ffd66b;
   background: linear-gradient(
     145.74deg,
     #9bdbff -33.02%,
@@ -425,8 +426,5 @@ h3 {
   margin-top: 1.5rem;
   padding-bottom: 4rem;
   opacity: 0.6;
-
-  // position: relative;
-  // top: 20px;
 }
 </style>

@@ -18,5 +18,4 @@ You can check the deployed version within the validity period [here.](https://ge
 
 ### Next
 
-- Background gradient changes with actual temperature
 - Ensure test functions
