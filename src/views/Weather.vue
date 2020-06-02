@@ -99,6 +99,16 @@
         </div>
       </div>
     </div>
+    <div
+      v-else-if="cityInfo === '' && search"
+      :class="zeroSearch === 'true' ? '' : 'weather-result'"
+    >
+      <div class="error-message">
+        <span>ERRORRRRRR:</span>
+        <br />You mistyped the <br />city <br />or chose the wrong <br />country
+        code
+      </div>
+    </div>
 
     <div class="back-to-welcome">
       <router-link to="/">Back to Welcome</router-link>
@@ -142,6 +152,7 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
+  search = false;
   url = `https://www.weatherbit.io/static/img/icons/`;
   extension = `.png`;
   timerIDCounter = 0;
@@ -180,7 +191,7 @@ export default class Weather extends Vue {
     }
   };
 
-  fetchWeather(event: any) {
+  fetchWeather(event: any, search: boolean) {
     const city: string = this.queryCity;
     const code: string = this.countryCode;
 
@@ -199,6 +210,8 @@ export default class Weather extends Vue {
 
       this.queryCity = "";
       this.zeroSearch = "false";
+
+      this.search = true;
     }
   }
 }
@@ -209,11 +222,13 @@ export default class Weather extends Vue {
 $colorByTemp: var(--color);
 
 .weather-result {
-  position: absolute;
+  // position: relative;
   width: 100%;
   height: auto;
-  padding-right: 2rem;
-  padding-bottom: 5rem;
+  // padding-right: 2rem;
+  // margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 23rem;
 
   background: linear-gradient(
     145.74deg,
@@ -221,7 +236,8 @@ $colorByTemp: var(--color);
     #b4deda 52.01%,
     $colorByTemp 137.04%
   );
-  background-position: left center;
+
+  background-position: center center;
   background-repeat: repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -242,12 +258,14 @@ $colorByTemp: var(--color);
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   position: relative;
-  margin-top: 10%;
-  left: 27%;
-  width: 45%;
+  // margin-top: 10%;
+  // padding-top: 100px;
+  left: 25%;
+  width: 50%;
   height: auto;
   min-height: 50px;
   max-height: auto;
+  margin-top: 100px;
 }
 
 .search-box > div {
@@ -328,7 +346,7 @@ $colorByTemp: var(--color);
 }
 
 h3 {
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: 2.5rem;
 }
 
@@ -355,18 +373,21 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 10rem;
+  font-size: 6rem;
   font-weight: 800;
-  position: relative;
-  left: 30px;
+  text-align: center;
+  // position: relative;
+  // left: 25%;
+  // width: 50%;
+  // left: 30px;
 }
 
 .actual-temp > span {
   position: relative;
-  bottom: 80px;
-  right: 40px;
+  bottom: 20px;
+  left: 0;
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 800;
 }
 
@@ -432,8 +453,25 @@ h3 {
 }
 
 .back-to-welcome {
-  margin-top: 1.5rem;
+  // position: relative;
+  // bottom: -200px;
+  margin-top: 23rem;
   padding-bottom: 4rem;
   opacity: 0.6;
+}
+
+.error-message {
+  color: rgba(255, 0, 0, 0.9);
+  opacity: 0.7;
+  font-size: 1rem;
+  margin-top: 5rem;
+  position: absolute;
+  left: 25%;
+  width: 50%;
+}
+
+.error-message > span {
+  font-size: 1.5rem;
+  // background-color: turquoise;
 }
 </style>
