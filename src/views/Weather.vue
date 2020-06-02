@@ -243,7 +243,7 @@ $colorByTemp: var(--color);
   border-radius: 16px;
   position: relative;
   margin-top: 10%;
-  left: 26%;
+  left: 25%;
   width: 50%;
   height: auto;
   min-height: 50px;
@@ -328,7 +328,7 @@ $colorByTemp: var(--color);
 }
 
 h3 {
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: 2.5rem;
 }
 
