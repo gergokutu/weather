@@ -210,12 +210,8 @@ $colorByTemp: var(--color);
 
 .weather-result {
   position: absolute;
-  height: 115%;
-  top: 0;
-  left: 0;
-  width: 103%;
-  margin: 0;
-  margin-right: 2rem;
+  width: 100%;
+  padding-right: 2rem;
 
   background: linear-gradient(
     145.74deg,
@@ -223,9 +219,9 @@ $colorByTemp: var(--color);
     #b4deda 52.01%,
     $colorByTemp 137.04%
   );
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: left center;
+  background-repeat: repeat;
+  background-attachment: scroll;
   background-size: cover;
 }
 
