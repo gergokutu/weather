@@ -54,7 +54,7 @@ html {
       #fe9255 111.85%
     );
   background-attachment: fixed;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   margin: -1rem;
 
   position: absolute;

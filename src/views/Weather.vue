@@ -1,11 +1,18 @@
 <template>
-  <div :class="zeroSearch === 'true' ? 'weather-search' : 'weather-result'">
+  <div
+    :class="zeroSearch === 'true' ? '' : 'weather-result'"
+    :style="
+      zeroSearch === 'true'
+        ? ''
+        : `--color: ${colorCodes[chooseColor(actual.data[0].temp)]}`
+    "
+  >
     <div class="search-box">
       <div class="weather-icon">
         <img
           :src="
             url +
-              (zeroSearch === 'true' ? 'c01d' : cityInfo.data[0].weather.icon) +
+              (zeroSearch === 'true' ? 'c01d' : actual.data[0].weather.icon) +
               extension
           "
         />
@@ -22,9 +29,8 @@
               v-for="(item, index) in countryList"
               :key="index"
               :value="item.countryCode"
+              >{{ item.countryCode }}</option
             >
-              {{ item.countryCode }}
-            </option>
           </select>
         </div>
       </div>
@@ -50,7 +56,8 @@
       <h3 class="city-name">{{ cityInfo.city_name }}</h3>
 
       <div class="actual-temp">
-        {{ Math.round(cityInfo.data[0].temp) }} <span>&#8451;</span>
+        {{ Math.round(actual.data[0].temp) }}
+        <span>&#8451;</span>
       </div>
 
       <div class="forecast">
@@ -105,7 +112,7 @@ import { mapState } from "vuex";
 
 @Component({
   computed: {
-    ...mapState(["cityInfo", "countryList", "avgTen"])
+    ...mapState(["cityInfo", "countryList", "avgTen", "actual"])
   }
 })
 export default class Weather extends Vue {
@@ -135,22 +142,61 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
-  endColor = "$colorByTemp: #FFD66B";
-
   url = `https://www.weatherbit.io/static/img/icons/`;
-  // code = `c02d`;
   extension = `.png`;
+  timerIDCounter = 0;
+  colorCodes = [
+    "#102F7E", // -40
+    "#0C8DD6", // -30
+    "#1AA0EC", // -20
+    "#60C6FF", // -10
+    "#9BDBFF", // 0
+    "#B4DEDA", // 10
+    "#FFD66B", // 20
+    "#FFC178", // 30
+    "#FE9255" // 40
+  ];
 
   get flagURL() {
     return `https://www.countryflags.io/${this.countryCode}/shiny/32.png`;
   }
 
+  chooseColor = (temp: number) => {
+    if (temp < -41) return 0;
+    if (temp < -31) return 1;
+    if (temp < -21) return 2;
+    if (temp < -11) return 3;
+    if (temp < 1) return 4;
+    if (temp < 11) return 5;
+    if (temp < 21) return 6;
+    if (temp < 31) return 7;
+    if (temp >= 31) return 8;
+  };
+
+  clearAllIntervals = () => {
+    const nextID = setInterval(() => console.log("timerID:", nextID), 1000);
+    for (let i = 1; i <= nextID; i++) {
+      clearInterval(i);
+    }
+  };
+
   fetchWeather(event: any) {
-    const city = this.queryCity;
-    const code = this.countryCode;
+    const city: string = this.queryCity;
+    const code: string = this.countryCode;
 
     if (event.key == "Enter") {
-      this.$store.dispatch("loadCity", { city, code });
+      if (this.timerIDCounter > 0) {
+        this.clearAllIntervals();
+      }
+      this.timerIDCounter++;
+
+      this.$store.dispatch("loadCityForecast", { city, code });
+      this.$store.dispatch("loadCityActual", { city, code });
+      // API refreshed every 5 mins > 300000ms
+      setInterval(() => {
+        this.$store.dispatch("loadCityActual", { city, code });
+      }, 300000);
+
       this.queryCity = "";
       this.zeroSearch = "false";
     }
@@ -160,6 +206,24 @@ export default class Weather extends Vue {
 
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+$colorByTemp: var(--color);
+
+.weather-result {
+  position: absolute;
+  width: 100%;
+  padding-right: 2rem;
+
+  background: linear-gradient(
+    145.74deg,
+    #9bdbff -33.02%,
+    #b4deda 52.01%,
+    $colorByTemp 137.04%
+  );
+  background-position: left center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 .search-box {
   display: flex;
@@ -167,22 +231,20 @@ export default class Weather extends Vue {
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: center;
-
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.9)
     ),
-    #4fffca91;
+    #f8f8f8;
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
-
   position: relative;
-  margin-top: 13%;
+  margin-top: 10%;
   left: 27%;
   width: 45%;
   height: auto;
-  min-height: 92px;
+  min-height: 70px;
 }
 
 .search-box > div {
@@ -190,16 +252,10 @@ export default class Weather extends Vue {
   height: 38px;
 }
 
-.search-bar {
-  background-color: transparent;
-  width: 90%;
-}
-
 .select-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // align-content: center;
   justify-content: space-evenly;
   text-align: center;
   width: 120px;
@@ -209,7 +265,6 @@ export default class Weather extends Vue {
 
 .select-box > select {
   border: none;
-  background-color: #ffffff;
 }
 
 .weather-icon {
@@ -234,15 +289,33 @@ export default class Weather extends Vue {
   border-radius: 6px;
 }
 
+.search-bar {
+  background-color: transparent;
+  width: 90%;
+}
+
 .search-bar > input {
+  outline: none;
   font-size: 0.7rem;
   font-weight: bold;
   border: none;
   height: 27px;
   width: 85%;
-  opacity: 0.4;
+  opacity: 0.9;
   margin-top: 4px;
   padding-left: 2rem;
+  // background: #FFFFFF;
+  border: 2px solid #b5c7ff;
+  border-radius: 6px;
+}
+
+.search-bar > input:placeholder-shown {
+  opacity: 0.4;
+  border: 1px solid rgba(8, 21, 62, 0.05);
+}
+
+.search-bar > input:hover {
+  border: 1px solid #b5c7ff;
 }
 
 .search-icon {
@@ -253,7 +326,7 @@ export default class Weather extends Vue {
 
 h3 {
   opacity: 0.5;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .weather-icon,
@@ -282,7 +355,6 @@ h3 {
   font-size: 10rem;
   font-weight: 800;
   position: relative;
-  bottom: 30px;
   left: 30px;
 }
 
@@ -301,7 +373,7 @@ h3 {
   opacity: 0.9;
   margin-bottom: 1rem;
   position: relative;
-  bottom: 50px;
+  bottom: 20px;
   right: auto;
 }
 
@@ -320,15 +392,13 @@ h3 {
 
   position: relative;
   margin-top: 20px;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   top: 0;
   left: 20%;
   width: 60%;
 }
 
 .period {
-  margin-top: 70px;
-  // margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.4;
@@ -362,8 +432,5 @@ h3 {
   margin-top: 1.5rem;
   padding-bottom: 4rem;
   opacity: 0.6;
-
-  position: relative;
-  top: 130px;
 }
 </style>
