@@ -328,7 +328,7 @@ $colorByTemp: var(--color);
 }
 
 h3 {
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: 2.5rem;
 }
 
