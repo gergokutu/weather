@@ -211,7 +211,9 @@ $colorByTemp: var(--color);
 .weather-result {
   position: absolute;
   width: 100%;
+  height: auto;
   padding-right: 2rem;
+  padding-bottom: 5rem;
 
   background: linear-gradient(
     145.74deg,
@@ -241,10 +243,11 @@ $colorByTemp: var(--color);
   border-radius: 16px;
   position: relative;
   margin-top: 10%;
-  left: 27%;
-  width: 45%;
+  left: 26%;
+  width: 50%;
   height: auto;
-  min-height: 70px;
+  min-height: 50px;
+  max-height: auto;
 }
 
 .search-box > div {
