@@ -211,7 +211,9 @@ $colorByTemp: var(--color);
 .weather-result {
   position: absolute;
   width: 100%;
+  height: auto;
   padding-right: 2rem;
+  padding-bottom: 3rem;
 
   background: linear-gradient(
     145.74deg,
