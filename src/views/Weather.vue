@@ -221,7 +221,7 @@ $colorByTemp: var(--color);
   );
   background-position: left center;
   background-repeat: repeat;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
 }
 
