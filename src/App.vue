@@ -16,26 +16,22 @@
   color: #08153e;
 }
 
-#nav {
-  padding: 30px;
-  opacity: 0.6;
-  background-color: transparent;
+a {
+  font-weight: bold;
+  color: #2c3e50;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    // <a> and class=router-link-exact-active
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  // <a> and class=router-link-exact-active
+  &.router-link-exact-active {
+    color: #42b983;
   }
 }
 
-html {
-  height: 100vh;
-  width: auto;
+html,
+body {
+  padding: 0;
   margin: 0;
+  width: 100%;
+  min-height: 100vh;
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.8),
@@ -54,11 +50,5 @@ html {
       #fe9255 111.85%
     );
   background-attachment: fixed;
-  // box-sizing: border-box;
-  margin: -1rem;
-
-  position: absolute;
-  top: 0;
-  width: 100%;
 }
 </style>
