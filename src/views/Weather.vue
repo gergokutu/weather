@@ -243,7 +243,7 @@ $colorByTemp: var(--color);
   border-radius: 16px;
   position: relative;
   margin-top: 10%;
-  left: 25%;
+  left: 26%;
   width: 50%;
   height: auto;
   min-height: 50px;
