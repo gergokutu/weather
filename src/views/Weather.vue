@@ -236,7 +236,7 @@ $colorByTemp: var(--color);
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.9)
     ),
-    #4fffca91;
+    #f8f8f8;
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   position: relative;
@@ -252,16 +252,10 @@ $colorByTemp: var(--color);
   height: 38px;
 }
 
-.search-bar {
-  background-color: transparent;
-  width: 90%;
-}
-
 .select-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // align-content: center;
   justify-content: space-evenly;
   text-align: center;
   width: 120px;
@@ -271,7 +265,6 @@ $colorByTemp: var(--color);
 
 .select-box > select {
   border: none;
-  background-color: #ffffff;
 }
 
 .weather-icon {
@@ -296,15 +289,33 @@ $colorByTemp: var(--color);
   border-radius: 6px;
 }
 
+.search-bar {
+  background-color: transparent;
+  width: 90%;
+}
+
 .search-bar > input {
+  outline: none;
   font-size: 0.7rem;
   font-weight: bold;
   border: none;
   height: 27px;
   width: 85%;
-  opacity: 0.4;
+  opacity: 0.9;
   margin-top: 4px;
   padding-left: 2rem;
+  // background: #FFFFFF;
+  border: 2px solid #b5c7ff;
+  border-radius: 6px;
+}
+
+.search-bar > input:placeholder-shown {
+  opacity: 0.4;
+  border: 1px solid rgba(8, 21, 62, 0.05);
+}
+
+.search-bar > input:hover {
+  border: 1px solid #b5c7ff;
 }
 
 .search-icon {
