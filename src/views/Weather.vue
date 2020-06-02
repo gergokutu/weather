@@ -265,7 +265,7 @@ $colorByTemp: var(--color);
   height: auto;
   min-height: 50px;
   max-height: auto;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .search-box > div {
@@ -369,24 +369,25 @@ h3 {
   font-style: normal;
   font-weight: 600;
   color: #08153e;
-
-  background-color: rgba(255, 0, 0, 0.9);
 }
 
 .actual-temp {
   color: #ffffff;
-  font-size: 10rem;
+  font-size: 6rem;
   font-weight: 800;
-  position: relative;
-  left: 30px;
+  text-align: center;
+  // position: relative;
+  // left: 25%;
+  // width: 50%;
+  // left: 30px;
 }
 
 .actual-temp > span {
   position: relative;
-  bottom: 80px;
-  right: 40px;
+  bottom: 20px;
+  left: 0;
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 800;
 }
 
@@ -454,19 +455,19 @@ h3 {
 .back-to-welcome {
   // position: relative;
   // bottom: -200px;
-  margin-top: 20rem;
+  margin-top: 23rem;
   padding-bottom: 4rem;
   opacity: 0.6;
 }
 
 .error-message {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 0, 0, 0.9);
+  opacity: 0.7;
   font-size: 1rem;
   margin-top: 5rem;
   position: absolute;
   left: 25%;
   width: 50%;
-  background-color: turquoise;
 }
 
 .error-message > span {
