@@ -99,6 +99,16 @@
         </div>
       </div>
     </div>
+    <div
+      v-else-if="cityInfo === '' && search"
+      :class="zeroSearch === 'true' ? '' : 'weather-result'"
+    >
+      <div class="error-message">
+        <span>ERRORRRRRR:</span>
+        <br />You mistyped the <br />city <br />or chose the wrong <br />country
+        code
+      </div>
+    </div>
 
     <div class="back-to-welcome">
       <router-link to="/">Back to Welcome</router-link>
@@ -142,6 +152,7 @@ export default class Weather extends Vue {
     "December"
   ];
   zeroSearch = "true";
+  search = false;
   url = `https://www.weatherbit.io/static/img/icons/`;
   extension = `.png`;
   timerIDCounter = 0;
@@ -180,7 +191,7 @@ export default class Weather extends Vue {
     }
   };
 
-  fetchWeather(event: any) {
+  fetchWeather(event: any, search: boolean) {
     const city: string = this.queryCity;
     const code: string = this.countryCode;
 
@@ -199,6 +210,8 @@ export default class Weather extends Vue {
 
       this.queryCity = "";
       this.zeroSearch = "false";
+
+      this.search = true;
     }
   }
 }
@@ -212,7 +225,8 @@ $colorByTemp: var(--color);
   position: absolute;
   width: 100%;
   height: auto;
-  padding-right: 2rem;
+  // padding-right: 2rem;
+  // margin: -1rem;
   padding-bottom: 23em;
 
   background: linear-gradient(
@@ -221,7 +235,8 @@ $colorByTemp: var(--color);
     #b4deda 52.01%,
     $colorByTemp 137.04%
   );
-  background-position: left center;
+
+  background-position: center center;
   background-repeat: repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -351,6 +366,8 @@ h3 {
   font-style: normal;
   font-weight: 600;
   color: #08153e;
+
+  background-color: rgba(255, 0, 0, 0.9);
 }
 
 .actual-temp {
@@ -432,8 +449,25 @@ h3 {
 }
 
 .back-to-welcome {
-  margin-top: 1.5rem;
+  // position: relative;
+  // bottom: -200px;
+  margin-top: 20rem;
   padding-bottom: 4rem;
   opacity: 0.6;
+}
+
+.error-message {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin-top: 5rem;
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  background-color: turquoise;
+}
+
+.error-message > span {
+  font-size: 1.5rem;
+  // background-color: turquoise;
 }
 </style>
