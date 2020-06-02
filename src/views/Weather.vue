@@ -237,8 +237,7 @@ $colorByTemp: var(--color);
       rgba(255, 255, 255, 0.9)
     ),
     #4fffca91;
-  box-shadow: 0px 2px 10px rgba(1, 5, 19, 0.15),
-    2px 4px 15px rgba(18, 35, 95, 0.15), 4px 6px 20px rgba(58, 81, 156, 0.15);
+  box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   position: relative;
   margin-top: 10%;
