@@ -246,7 +246,8 @@ $colorByTemp: var(--color);
   left: 27%;
   width: 45%;
   height: auto;
-  min-height: 70px;
+  min-height: 50px;
+  max-height: auto;
 }
 
 .search-box > div {
