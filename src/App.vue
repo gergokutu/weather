@@ -26,11 +26,12 @@ a {
   }
 }
 
-html {
-  // height: 100vh;
-  width: auto;
-  // box-sizing: border-box;
+html,
+body {
+  padding: 0;
   margin: 0;
+  width: 100%;
+  min-height: 100vh;
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.8),
@@ -49,11 +50,5 @@ html {
       #fe9255 111.85%
     );
   background-attachment: fixed;
-
-  // margin: 0;
-
-  // position: absolute;
-  // top: 0;
-  // width: 100%;
 }
 </style>

@@ -222,12 +222,13 @@ export default class Weather extends Vue {
 $colorByTemp: var(--color);
 
 .weather-result {
-  position: absolute;
+  // position: relative;
   width: 100%;
   height: auto;
   // padding-right: 2rem;
-  // margin: -1rem;
-  padding-bottom: 23em;
+  // margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 23rem;
 
   background: linear-gradient(
     145.74deg,
@@ -257,12 +258,14 @@ $colorByTemp: var(--color);
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   position: relative;
-  margin-top: 10%;
+  // margin-top: 10%;
+  // padding-top: 100px;
   left: 25%;
   width: 50%;
   height: auto;
   min-height: 50px;
   max-height: auto;
+  margin-top: 20px;
 }
 
 .search-box > div {
