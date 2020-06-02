@@ -213,7 +213,7 @@ $colorByTemp: var(--color);
   width: 100%;
   height: auto;
   padding-right: 2rem;
-  padding-bottom: 5rem;
+  padding-bottom: 23em;
 
   background: linear-gradient(
     145.74deg,
