@@ -373,7 +373,7 @@ h3 {
 
 .actual-temp {
   color: #ffffff;
-  font-size: 6rem;
+  font-size: 10rem;
   font-weight: 800;
   text-align: center;
   // position: relative;
@@ -384,10 +384,10 @@ h3 {
 
 .actual-temp > span {
   position: relative;
-  bottom: 20px;
-  left: 0;
+  bottom: 90px;
+  right: 20px;
   color: #ffffff;
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 800;
 }
 
