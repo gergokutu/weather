@@ -376,16 +376,17 @@ h3 {
   font-size: 10rem;
   font-weight: 800;
   text-align: center;
+  padding-left: 40px;
   // position: relative;
-  // left: 25%;
-  // width: 50%;
+  // left: 20px;
+  // width: 100%;
   // left: 30px;
 }
 
 .actual-temp > span {
   position: relative;
   bottom: 90px;
-  right: 10px;
+  right: 40px;
   color: #ffffff;
   font-size: 2rem;
   font-weight: 800;
