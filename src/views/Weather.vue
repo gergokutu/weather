@@ -385,7 +385,7 @@ h3 {
 .actual-temp > span {
   position: relative;
   bottom: 90px;
-  right: 20px;
+  right: 10px;
   color: #ffffff;
   font-size: 2rem;
   font-weight: 800;
