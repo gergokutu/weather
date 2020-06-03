@@ -104,9 +104,9 @@
       :class="zeroSearch === 'true' ? '' : 'weather-result'"
     >
       <div class="error-message">
-        <span>ERRORRRRRR:</span>
-        <br />You mistyped the <br />city <br />or chose the wrong <br />country
-        code
+        <span>ERROR:</span>
+        <br />You mistyped the <br /><strong>city</strong> <br />and/or chose
+        the wrong <br /><strong>country code</strong>!!!
       </div>
     </div>
 
@@ -222,21 +222,16 @@ export default class Weather extends Vue {
 $colorByTemp: var(--color);
 
 .weather-result {
-  // position: relative;
   width: 100%;
   height: auto;
-  // padding-right: 2rem;
-  // margin: 0 auto;
   padding-top: 2rem;
   padding-bottom: 23rem;
-
   background: linear-gradient(
     145.74deg,
     #9bdbff -33.02%,
     #b4deda 52.01%,
     $colorByTemp 137.04%
   );
-
   background-position: center center;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -258,8 +253,6 @@ $colorByTemp: var(--color);
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   position: relative;
-  // margin-top: 10%;
-  // padding-top: 100px;
   left: 25%;
   width: 50%;
   height: auto;
@@ -304,7 +297,6 @@ $colorByTemp: var(--color);
   align-content: center;
   justify-content: space-evenly;
   text-align: center;
-
   width: 425px;
   border: 1px solid rgba(8, 21, 62, 0.05);
   border-radius: 6px;
@@ -325,7 +317,6 @@ $colorByTemp: var(--color);
   opacity: 0.9;
   margin-top: 4px;
   padding-left: 2rem;
-  // background: #FFFFFF;
   border: 2px solid #b5c7ff;
   border-radius: 6px;
 }
@@ -377,10 +368,6 @@ h3 {
   font-weight: 800;
   text-align: center;
   padding-left: 40px;
-  // position: relative;
-  // left: 20px;
-  // width: 100%;
-  // left: 30px;
 }
 
 .actual-temp > span {
@@ -454,8 +441,6 @@ h3 {
 }
 
 .back-to-welcome {
-  // position: relative;
-  // bottom: -200px;
   margin-top: 23rem;
   padding-bottom: 4rem;
   opacity: 0.6;
@@ -473,6 +458,5 @@ h3 {
 
 .error-message > span {
   font-size: 1.5rem;
-  // background-color: turquoise;
 }
 </style>
