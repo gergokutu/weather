@@ -178,11 +178,13 @@ export default class Weather extends Vue {
   }
 
   chooseColor = (temp: number) => {
-    const endpoint = -26;
+    const endpoint = -25;
+
     for (let i = 0; i < 14; i++) {
-      if (temp < endpoint + 5 * i) return i;
+      const measure = 5 * i;
+      if (temp < endpoint + measure) return i;
     }
-    if (temp >= 34) return 13;
+    if (temp >= 35) return 13;
   };
 
   clearAllIntervals = () => {
