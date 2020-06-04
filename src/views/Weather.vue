@@ -157,15 +157,20 @@ export default class Weather extends Vue {
   extension = `.png`;
   timerIDCounter = 0;
   colorCodes = [
-    "#102F7E", // -40
-    "#0C8DD6", // -30
-    "#1AA0EC", // -20
-    "#60C6FF", // -10
-    "#9BDBFF", // 0
-    "#B4DEDA", // 10
-    "#FFD66B", // 20
-    "#FFC178", // 30
-    "#FE9255" // 40
+    "#01113a",
+    "#082161",
+    "#102F7E",
+    "#0C8DD6",
+    "#1AA0EC",
+    "#60C6FF",
+    "#9BDBFF",
+    "#B4DEDA",
+    "#FFD66B",
+    "#FFC178",
+    "#FE9255",
+    "#fe7c55",
+    "#f04d24",
+    "#f61904"
   ];
 
   get flagURL() {
@@ -173,15 +178,20 @@ export default class Weather extends Vue {
   }
 
   chooseColor = (temp: number) => {
-    if (temp < -39) return 0;
-    if (temp < -29) return 1;
-    if (temp < -19) return 2;
-    if (temp < -9) return 3;
-    if (temp < 1) return 4;
-    if (temp < 11) return 5;
-    if (temp < 21) return 6;
-    if (temp < 31) return 7;
-    if (temp >= 31) return 8;
+    if (temp < -26) return 0;
+    if (temp < -21) return 1;
+    if (temp < -16) return 2;
+    if (temp < -11) return 3;
+    if (temp < -6) return 4;
+    if (temp < 1) return 5;
+    if (temp < 6) return 6;
+    if (temp < 11) return 7;
+    if (temp < 16) return 8;
+    if (temp < 21) return 9;
+    if (temp < 26) return 10;
+    if (temp < 31) return 11;
+    if (temp < 36) return 12;
+    if (temp >= 36) return 13;
   };
 
   clearAllIntervals = () => {
@@ -222,6 +232,7 @@ export default class Weather extends Vue {
 $colorByTemp: var(--color);
 
 .weather-result {
+  // color: #f04d24;
   width: 100%;
   height: auto;
   padding-top: 2rem;
