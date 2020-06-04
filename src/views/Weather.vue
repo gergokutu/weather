@@ -173,10 +173,10 @@ export default class Weather extends Vue {
   }
 
   chooseColor = (temp: number) => {
-    if (temp < -41) return 0;
-    if (temp < -31) return 1;
-    if (temp < -21) return 2;
-    if (temp < -11) return 3;
+    if (temp < -39) return 0;
+    if (temp < -29) return 1;
+    if (temp < -19) return 2;
+    if (temp < -9) return 3;
     if (temp < 1) return 4;
     if (temp < 11) return 5;
     if (temp < 21) return 6;
