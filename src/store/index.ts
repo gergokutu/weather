@@ -284,9 +284,12 @@ export default new Vuex.Store({
         )
         .then(response => {
           const forecast = response.data;
+          if (!forecast) setTimeout(() => location.reload(), 1000);
           commit("SET_CITY_FORECAST", forecast);
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          location.reload();
+        });
     },
 
     loadCityActual({ commit }, { city, code }) {
@@ -298,9 +301,12 @@ export default new Vuex.Store({
         )
         .then(response => {
           const actual = response.data;
+          if (!actual) setTimeout(() => location.reload(), 1000);
           commit("SET_CITY_ACTUAL", actual);
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          location.reload();
+        });
     }
   },
   modules: {}
