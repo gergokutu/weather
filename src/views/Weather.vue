@@ -46,7 +46,7 @@
           />
         </div>
 
-        <div class="search-icon">
+        <div class="search-icon" @click="fetchWeather">
           <i class="fas fa-search"></i>
         </div>
       </div>
@@ -198,7 +198,7 @@ export default class Weather extends Vue {
     const city: string = this.queryCity;
     const code: string = this.countryCode;
 
-    if (event.key == "Enter") {
+    if (event.key == "Enter" || (!event.code && event.type === "click")) {
       if (this.timerIDCounter > 0) {
         this.clearAllIntervals();
       }
