@@ -276,7 +276,8 @@ export default new Vuex.Store({
 
   actions: {
     loadCityForecast({ commit }, { city, code }) {
-      const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+      // const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+      const API_KEY = "2dcaf3aa5505468d82e04734e91e4cee";
 
       axios
         .get(
@@ -293,7 +294,8 @@ export default new Vuex.Store({
     },
 
     loadCityActual({ commit }, { city, code }) {
-      const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+      // const API_KEY = "27612018b6ba443f89d194a31acfea3b";
+      const API_KEY = "2dcaf3aa5505468d82e04734e91e4cee";
 
       axios
         .get(
