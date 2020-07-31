@@ -2,6 +2,8 @@
 
 You can search for real time weather data by ensuring the country code and typing the city name. The application also shows you the average temperature of the next 10 days and forecast for the next 7 days.
 
+![](weather.gif)
+
 ## Notes:
 
 - Application fetches data from https://www.weatherbit.io/ by using free API_KEY
