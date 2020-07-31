@@ -13,7 +13,3 @@ You can search for real time weather data by ensuring the country code and typin
 - 1000 API call per day
 
 You can insert your own API_KEY in src/store/index.ts into the loadCityActual & loadCityForecast actions.
-
-### Next
-
-- Ensure test functions
