@@ -2,6 +2,8 @@
 
 You can search for real time weather data by ensuring the country code and typing the city name. The application also shows you the average temperature of the next 10 days and forecast for the next 7 days.
 
+## :point_right: [checkout the deployed version here](https://gergokutu-weather.netlify.app) :point_left:
+
 ![](weather.gif)
 
 ## Notes:
@@ -15,8 +17,6 @@ You can insert your own API_KEY in src/store/index.ts into the loadCityActual & 
 ## 
       -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
 ##    
-
-You can check the deployed version within the validity period [here.](https://gergokutu-weather.netlify.app)
 
 ### Next
 
