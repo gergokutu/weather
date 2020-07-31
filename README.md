@@ -2,6 +2,8 @@
 
 You can search for real time weather data by ensuring the country code and typing the city name. The application also shows you the average temperature of the next 10 days and forecast for the next 7 days.
 
+## :point_right: [checkout the deployed version here](https://gergokutu-weather.netlify.app) :point_left:
+
 ![](weather.gif)
 
 ## Notes:
@@ -12,12 +14,25 @@ You can search for real time weather data by ensuring the country code and typin
 
 You can insert your own API_KEY in src/store/index.ts into the loadCityActual & loadCityForecast actions.
 
-## 
-      -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
-##    
+## Project setup
+```
+npm install
+```
 
-You can check the deployed version within the validity period [here.](https://gergokutu-weather.netlify.app)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-### Next
+### Compiles and minifies for production
+```
+npm run build
+```
 
-- Ensure test functions
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
