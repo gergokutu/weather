@@ -14,10 +14,6 @@ You can search for real time weather data by ensuring the country code and typin
 
 You can insert your own API_KEY in src/store/index.ts into the loadCityActual & loadCityForecast actions.
 
-## 
-      -  -  -   IN PROGRESS  -   -   -    -  -   IN PROGRESS  -   -   -    -  -  -   IN PROGRESS  -   -   -  
-##    
-
 ### Next
 
 - Ensure test functions
