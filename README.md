@@ -13,3 +13,26 @@ You can search for real time weather data by ensuring the country code and typin
 - 1000 API call per day
 
 You can insert your own API_KEY in src/store/index.ts into the loadCityActual & loadCityForecast actions.
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
